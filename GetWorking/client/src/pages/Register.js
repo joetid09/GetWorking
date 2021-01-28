@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import { Button, Input } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -20,7 +20,8 @@ const Register = () => {
         e.preventDefault();
 
         if (password !== confirm) {
-            toast.error("Passwords do not match");
+            // toast.error("Passwords do not match");
+            alert("passwords do not match")
             return;
         }
 
@@ -28,18 +29,19 @@ const Register = () => {
         const profile = {
             firstName,
             lastName,
-            displayName,
-            email,
+            email
         };
         register(profile, password)
             .then((user) => {
                 setLoading(false);
-                toast.info(`Welcome ${user.displayName}`);
+                // toast.info(`Welcome ${user.displayName}`);
+                alert("welcome back!")
                 history.push("/");
             })
             .catch((err) => {
                 setLoading(false);
-                toast.error("Invalid email");
+                // toast.error("Invalid email");
+                alert("invalid email")
             });
     };
 
