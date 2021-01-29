@@ -8,24 +8,27 @@ using System.Threading.Tasks;
 
 namespace GetWorking.Repositories
 {
-    public class UserProfileRepository : IUserProfileRepository
+    public class EventRepository : IEventRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public UserProfileRepository(ApplicationDbContext context)
+        public EventRepository(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public UserProfile GetByFirebaseUserId(string firebaseUserId)
+        public List<Event> GetByApplicationId(int applicationId)
         {
-            return _context.UserProfile
-                .FirstOrDefault(up => up.FirebaseUserId == firebaseUserId);
+            return _context.Event
+                .Where(ep => ep.Id == applicationId)
+                .ToList();
+
+
         }
 
-        public void Add(UserProfile userProfile)
+        public void Add(Event newEvent)
         {
-            _context.Add(userProfile);
+            _context.Add(newEvent);
             _context.SaveChanges();
         }
 
@@ -34,3 +37,4 @@ namespace GetWorking.Repositories
 
     }
 }
+
