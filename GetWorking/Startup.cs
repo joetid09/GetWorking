@@ -75,6 +75,7 @@ namespace GetWorking
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

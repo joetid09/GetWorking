@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GetWorking.Controllers
 {
@@ -13,17 +15,31 @@ namespace GetWorking.Controllers
     [ApiController]
     public class ApplicationController : ControllerBase
     {
-        private readonly IApplicationRepository _repo;
-        public ApplicationController(IApplicationRepository repo)
+        private readonly IApplicationRepository _appRepo;
+        private readonly IUserProfileRepository _userProfileRepo;
+        public ApplicationController(IApplicationRepository applicationRepo, IUserProfileRepository userProfileRepo)
         {
-            _repo = repo;
+            _appRepo = applicationRepo;
+            _userProfileRepo = userProfileRepo;
         }
-        [HttpGet("{userProfileId}")]
-        public IActionResult GetUserApplications(int userProfileId)
+        [HttpGet]
+        public IActionResult GetUserApplications()
         {
-            return Ok(_repo.GetByUserProfileId(userProfileId));
+            var user = GetCurrentUserProfile();
+            return Ok(_appRepo.GetByUserProfileId(user.Id));
         }
-
+        private UserProfile GetCurrentUserProfile()
+        {
+            try
+            {
+                var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                return _userProfileRepo.GetByFirebaseUserId(firebaseUserId);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         //[HttpPost]
         //public IActionResult Post(Application application)
         //{
@@ -33,6 +49,5 @@ namespace GetWorking.Controllers
         //        new { firebaseUserId = userProfile.FirebaseUserId },
         //        userProfile);
         //}
-
     }
 }

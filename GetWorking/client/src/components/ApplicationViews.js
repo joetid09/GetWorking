@@ -22,7 +22,7 @@ const ApplicationViews = () => {
                 <Register />
             </Route>
             <Route path="/newApplication">
-                <NewApplication />
+                {<NewApplication />}
             </Route>
             <Route path="/applications">
                 <ApplicationList />
