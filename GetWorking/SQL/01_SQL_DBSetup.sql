@@ -56,5 +56,16 @@ CREATE TABLE [UserProfile] (
   CONSTRAINT UQ_Email UNIQUE(Email)
 )
 
+ALTER TABLE Application
+ADD FOREIGN KEY (UserProfileId) REFERENCES UserProfile(Id);
+
+ALTER TABLE ApplicationTag
+ADD FOREIGN KEY (ApplicationId) REFERENCES Application(Id);
+
+ALTER TABLE ApplicationTag
+ADD FOREIGN KEY (TagId) REFERENCES Tag(Id);
+
+ALTER TABLE Event
+ADD FOREIGN KEY (ApplicationId) REFERENCES Application(Id);
 
 GO
