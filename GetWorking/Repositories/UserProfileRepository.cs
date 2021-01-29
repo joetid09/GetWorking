@@ -21,7 +21,6 @@ namespace GetWorking.Repositories
         {
             return _context.UserProfile
                 .FirstOrDefault(up => up.FirebaseUserId == firebaseUserId);
-
         }
 
         public void Add(UserProfile userProfile)
