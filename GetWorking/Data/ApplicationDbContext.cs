@@ -15,5 +15,8 @@ namespace GetWorking.Data
 
         }
         public DbSet<UserProfile> UserProfile { get; set; }
+        public DbSet<Application> Application { get; set; }
+        public DbSet<Event> Event { get; set; }
+        public DbSet<Tag> Tag { get; set; }
     }
 }
