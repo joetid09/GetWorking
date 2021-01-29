@@ -20,7 +20,7 @@ namespace GetWorking.Repositories
         public List<Application> GetByUserProfileId(int userProfileId)
         {
             return _context.Application
-                .Where(ap => ap.Id == userProfileId)
+                .Where(ap => ap.UserProfileId == userProfileId)
                 .ToList();
 
 

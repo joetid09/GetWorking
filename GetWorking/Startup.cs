@@ -34,7 +34,6 @@ namespace GetWorking
         {
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
             services.AddTransient<IApplicationRepository, ApplicationRepository>();
-            services.AddTransient<IEventRepository, EventRepository>();
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
