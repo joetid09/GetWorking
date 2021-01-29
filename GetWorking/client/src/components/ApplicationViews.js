@@ -4,6 +4,8 @@ import { UserProfileContext } from "../providers/UserProfileProvider";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import HomePage from "../pages/HomePage"
+import NewApplication from "./Applications/NewApplication";
+import ApplicationList from "./Applications/ApplicationList"
 
 const ApplicationViews = () => {
     const { isLoggedIn } = useContext(UserProfileContext);
@@ -18,6 +20,12 @@ const ApplicationViews = () => {
             </Route>
             <Route path="/register">
                 <Register />
+            </Route>
+            <Route path="/newApplication">
+                <NewApplication />
+            </Route>
+            <Route path="/applications">
+                <ApplicationList />
             </Route>
         </Switch>
     );
