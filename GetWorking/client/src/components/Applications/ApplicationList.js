@@ -1,11 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import firebase from "firebase/app"
+import React, { useContext, useEffect, useState } from 'react'
+import App from '../../App'
+import { UserProfileContext } from '../../providers/UserProfileProvider'
+import ApplicationCard from "./ApplicationCard"
 
 const ApplicationList = () => {
-    const getToken = () => firebase.auth().currentUser.getIdToken();
+
+    const { getToken } = useContext(UserProfileContext)
     const [applications, setApplications] = useState([])
 
     useEffect(() => {
+        getApplications()
+    }, [])
+
+    const getApplications = () => {
         return getToken().then((token) => {
             fetch('/api/application', {
                 method: "GET",
@@ -16,16 +23,15 @@ const ApplicationList = () => {
                 .then((res) => res.json())
                 .then((apps) => setApplications(apps))
         })
-    }, [])
+    }
 
-
-    console.log(applications)
     return (
-        <div>
-            <h3>Your Applications</h3>
+        <div className="applicationContainer">
+            {applications.map((app) => {
+                return <ApplicationCard application={app} />
+            })}
         </div>
     )
-
 }
 
 export default ApplicationList;

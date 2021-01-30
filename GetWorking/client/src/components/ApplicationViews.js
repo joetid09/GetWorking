@@ -7,6 +7,8 @@ import HomePage from "../pages/HomePage"
 import NewApplication from "./Applications/NewApplication";
 import ApplicationList from "./Applications/ApplicationList"
 
+
+
 const ApplicationViews = () => {
     const { isLoggedIn } = useContext(UserProfileContext);
 
@@ -22,7 +24,7 @@ const ApplicationViews = () => {
                 <Register />
             </Route>
             <Route path="/newApplication">
-                {<NewApplication />}
+                {isLoggedIn ? <NewApplication /> : <Redirect to="/login" />}
             </Route>
             <Route path="/applications">
                 <ApplicationList />
