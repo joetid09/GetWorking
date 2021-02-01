@@ -28,11 +28,21 @@ namespace GetWorking.Controllers
             var user = GetCurrentUserProfile();
             return Ok(_appRepo.GetByUserProfileId(user.Id));
         }
+
+        [HttpPost]
+        public IActionResult Application(Application application)
+        {
+            var user = GetCurrentUserProfile();
+            application.UserProfileId = user.Id;
+            _appRepo.Add(application);
+            return base.Created("", application);
+        }
+
         private UserProfile GetCurrentUserProfile()
         {
             try
             {
-                var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var firebaseUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 return _userProfileRepo.GetByFirebaseUserId(firebaseUserId);
             }
             catch (Exception ex)
@@ -40,14 +50,5 @@ namespace GetWorking.Controllers
                 return null;
             }
         }
-        //[HttpPost]
-        //public IActionResult Post(Application application)
-        //{
-        //    _repo.Add(application);
-        //    return CreatedAtAction(
-        //        nameof(GetUserProfile),
-        //        new { firebaseUserId = userProfile.FirebaseUserId },
-        //        userProfile);
-        //}
     }
 }
