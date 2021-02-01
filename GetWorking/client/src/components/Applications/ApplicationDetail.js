@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const ApplicationDetail = ({ application }) => {
-    console.log()
+const ApplicationDetail = () => {
+
+    useEffect((refresh) => {
+        console.log("refreshed")
+    })
     return (
         <div>
-            <h2>{application.jobTitle}</h2>
+            <h2>hello</h2>
         </div>
     )
 }

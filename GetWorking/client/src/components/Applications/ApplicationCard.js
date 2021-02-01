@@ -4,11 +4,10 @@ import {
     CardTitle, CardSubtitle,
     CardText, Button
 } from 'reactstrap'
-import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import ApplicationDetail from "./ApplicationDetail"
 
 const ApplicationCard = ({ application }) => {
-    const history = useHistory();
 
     return (
         <Row>
@@ -16,12 +15,16 @@ const ApplicationCard = ({ application }) => {
                 <div>
                     <Card>
                         <Row>
+
                             <Col xs="5">
-                                <CardTitle><strong>Job Title: {application.jobTitle}</strong></CardTitle>
+                                <Link to={`/application/details/${application.id}`}>
+                                    <CardTitle><strong>Job Title: {application.jobTitle}</strong></CardTitle>
+                                </Link>
                                 <CardSubtitle>Company: {application.company}</CardSubtitle>
                                 <CardText>Date Applied {application.dateApplied}</CardText>
-                                <Button>Details</Button>
+                                <Button></Button>
                             </Col>
+
                             <Col xs="2"></Col>
                             <Col sx="5">
                                 <CardTitle><strong>Current Task:</strong></CardTitle>
