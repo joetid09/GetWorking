@@ -18,6 +18,6 @@ namespace GetWorking.Models
         [Required]
         public DateTime DateApplied { get; set; }
         [Required]
-        public int ApplicationId { get; set; }
+        public int UserProfileId { get; set; }
     }
 }
