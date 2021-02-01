@@ -29,6 +29,17 @@ namespace GetWorking.Controllers
             return Ok(_appRepo.GetByUserProfileId(user.Id));
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetApplicationDetail(int id)
+        {
+            //var user = GetCurrentUserProfile();
+           var applicationDetails = _appRepo.GetByApplicationId(id);
+            //if (user.Id != id) {
+            //    return Unauthorized();
+            //        }
+         return Ok(applicationDetails);
+        }
+
         [HttpPost]
         public IActionResult Application(Application application)
         {
