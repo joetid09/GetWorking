@@ -22,8 +22,15 @@ namespace GetWorking.Repositories
             return _context.Application
                 .Where(ap => ap.UserProfileId == userProfileId)
                 .ToList();
+        }
 
-
+        public Application GetByApplicationId(int applicationId)
+        {
+            return _context.Application
+                .Include(ap => ap.UserProfile)
+                .Where(ap => ap.Id == applicationId)
+                .FirstOrDefault();
+           
         }
 
         public void Add(Application application)
