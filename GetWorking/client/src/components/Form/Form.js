@@ -1,11 +1,11 @@
 import React from "react";
-
+import { Button } from "reactstrap"
 import Input from "./Input"
-import Button from "./Button"
-import classes from "../Form.module.css"
+// import Button from "./Button"
+// import classes from "../Form.module.css"
 
 const Form = ({
-    FormStructure,
+    formStructure,
     formData,
     setFormData,
     formTitle,
@@ -18,10 +18,12 @@ const Form = ({
         setFormData(formDataCopy);
     }
 
+    console.log("have we hit form")
+
     return (
-        <form className={classes.form} onSubmit={onSubmit}>
+        <form onSubmit={onSubmit}>
             <h2>{formTitle}</h2>
-            {FormStructure.map(f => (
+            {formStructure.map(f => (
                 <Input
                     key={f.name}
                     type={f.type}

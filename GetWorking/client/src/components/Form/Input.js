@@ -1,6 +1,6 @@
 import React from "react"
 
-import classes from "./Input.module.css";
+// import classes from "./Input.module.css";
 
 const Input = ({ text,
     type,
@@ -14,14 +14,13 @@ const Input = ({ text,
         <>
             <label htmlFor={id}>{text}</label>
             <input
-                className={classes.input}>
+                className="{classes.input}"
                 required={required}
                 name={name}
                 id={id}
                 type={type}
                 placeholder={placeholder}
-                onChange={handleChange}
-            </input>
+                onChange={handleChange} />
         </>
     )
 }
