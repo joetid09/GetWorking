@@ -9,11 +9,9 @@ const ApplicationCreate = () => {
 
     const formTitle = "Log a new Application"
     const token = getToken();
-    //create onSubmit to submit form to api
 
     const CreateApplication = (formData, token) => {
-        debugger;
-        console.log(` bearer ${token.i}`)
+        //currently calling token.i due to there being 5 fields on token and "i" having the actual token
         fetch("/api/application", {
             method: "POST",
             headers: {
@@ -27,7 +25,6 @@ const ApplicationCreate = () => {
     }
 
     const onSubmit = (e) => {
-        e.preventDefault()
         CreateApplication(formData, token)
     }
     return (
