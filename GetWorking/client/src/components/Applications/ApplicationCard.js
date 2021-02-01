@@ -20,7 +20,7 @@ const ApplicationCard = ({ application }) => {
                                 <CardTitle><strong>Job Title: {application.jobTitle}</strong></CardTitle>
                                 <CardSubtitle>Company: {application.company}</CardSubtitle>
                                 <CardText>Date Applied {application.dateApplied}</CardText>
-                                <Button onClick={ }>Details</Button>
+                                <Button>Details</Button>
                             </Col>
                             <Col xs="2"></Col>
                             <Col sx="5">
