@@ -18,8 +18,6 @@ const Form = ({
         setFormData(formDataCopy);
     }
 
-    console.log("have we hit form")
-
     return (
         <form onSubmit={onSubmit}>
             <h2>{formTitle}</h2>
@@ -35,7 +33,7 @@ const Form = ({
                     required={f.required}
                 />
             ))}
-            <Button buttonType='primary' text={buttonText} />
+            <Button type='submit'>{buttonText}</Button>
         </form>
     )
 };
