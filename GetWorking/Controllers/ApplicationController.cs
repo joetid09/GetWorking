@@ -53,6 +53,10 @@ namespace GetWorking.Controllers
         public IActionResult UpdateApplication(int id, Application application)
         {
             var OriginalApplication = _appRepo.GetByApplicationId(id);
+            if(id != application.Id)
+            {
+                return BadRequest();
+            }
             OriginalApplication.Company = application.Company;
             OriginalApplication.JobTitle = application.JobTitle;
             OriginalApplication.DateApplied = application.DateApplied;
