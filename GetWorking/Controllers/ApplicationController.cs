@@ -49,6 +49,21 @@ namespace GetWorking.Controllers
             return base.Created("", application);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult UpdateApplication(int id, Application application)
+        {
+            var OriginalApplication = _appRepo.GetByApplicationId(id);
+            if(id != application.Id)
+            {
+                return BadRequest();
+            }
+            OriginalApplication.Company = application.Company;
+            OriginalApplication.JobTitle = application.JobTitle;
+            OriginalApplication.DateApplied = application.DateApplied;
+            _appRepo.Update(OriginalApplication);
+            return Ok();
+        }
+
         private UserProfile GetCurrentUserProfile()
         {
             try

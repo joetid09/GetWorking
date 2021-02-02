@@ -8,5 +8,6 @@ namespace GetWorking.Repositories
         void Add(Application application);
         Application GetByApplicationId(int applicationId);
         List<Application> GetByUserProfileId(int userProfileId);
+        void Update(Application application);
     }
 }

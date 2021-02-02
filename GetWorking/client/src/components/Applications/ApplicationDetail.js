@@ -1,9 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { UserProfileContext } from '../../providers/UserProfileProvider'
+import ApplicationDetailCard from './ApplicationDetailsCard'
+import ApplicationUpdateModal from './ApplicationUpdateModal'
+import { Modal, ModalHeader, Button } from 'reactstrap'
 
 const ApplicationDetail = () => {
     const [application, setApplication] = useState({})
+    const [detailModal, setDetailModal] = useState(false)
     const { getToken } = useContext(UserProfileContext)
     const { appId } = useParams();
     const token = getToken()
@@ -25,8 +29,13 @@ const ApplicationDetail = () => {
     }
     return (
         <div>
-            <h2>{application.jobTitle}</h2>
-            <h1>something here</h1>
+            {!detailModal ?
+                <ApplicationDetailCard application={application} setDetailModal={setDetailModal} detailModal={detailModal} />
+                :
+                <Modal isOpen={detailModal}>
+                    <ApplicationUpdateModal setDetailModal={setDetailModal} />
+                </Modal>
+            }
         </div>
     )
 }

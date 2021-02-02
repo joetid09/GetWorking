@@ -39,6 +39,12 @@ namespace GetWorking.Repositories
             _context.SaveChanges();
         }
 
+        public void Update(Application application)
+        {
+            _context.Entry(application).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
 
 
 
