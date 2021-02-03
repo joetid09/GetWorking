@@ -33,7 +33,7 @@ const ApplicationDetail = () => {
                 <ApplicationDetailCard application={application} setDetailModal={setDetailModal} detailModal={detailModal} />
                 :
                 <Modal isOpen={detailModal}>
-                    <ApplicationUpdateModal setDetailModal={setDetailModal} />
+                    <ApplicationUpdateModal setDetailModal={setDetailModal} application={application} />
                 </Modal>
             }
         </div>

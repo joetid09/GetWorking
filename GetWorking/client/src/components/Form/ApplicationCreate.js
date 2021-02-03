@@ -3,7 +3,7 @@ import Form from "./Form"
 import { ApplicationForm } from "./FormElements"
 import { UserProfileContext } from '../../providers/UserProfileProvider'
 
-const ApplicationCreate = ({ form }) => {
+const ApplicationCreate = ({ application }) => {
     const [formData, setFormData] = useState({})
     const { getToken } = useContext(UserProfileContext)
 
@@ -24,8 +24,8 @@ const ApplicationCreate = ({ form }) => {
     }
     const UpdateApplication = (formData, token) => {
         //currently calling token.i due to there being 5 fields on token and "i" having the actual token
-        fetch("/api/application", {
-            method: "POST",
+        fetch(`/api/application/${application.id}`, {
+            method: "UPDATE",
             headers: {
                 Authorization:
                     `Bearer ${token.i}`,
@@ -37,7 +37,7 @@ const ApplicationCreate = ({ form }) => {
     }
 
     const onSubmit = (e) => {
-        form == "editDetails" ? UpdateApplication() :
+        application ? console.log("updated") :
             CreateApplication(formData, token)
     }
 
@@ -50,6 +50,7 @@ const ApplicationCreate = ({ form }) => {
             formData={formData}
             buttonText="Save"
             onSubmit={onSubmit}
+            application={application}
         />
     )
 }

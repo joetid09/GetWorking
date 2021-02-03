@@ -2,11 +2,11 @@ import React from 'react'
 import { ModalHeader, Button } from 'reactstrap'
 import ApplicationCreate from '../Form/ApplicationCreate'
 
-const ApplicationUpdateModal = ({ setDetailModal }) => {
+const ApplicationUpdateModal = ({ setDetailModal, application }) => {
     return (
         <div>
             <ModalHeader>Update Application Information</ModalHeader>
-            <ApplicationCreate form="editDetails" />
+            <ApplicationCreate applicaiton={application} />
             <Button
                 onClick={() => {
                     setDetailModal(false)
