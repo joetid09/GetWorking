@@ -37,7 +37,7 @@ const ApplicationCreate = ({ application }) => {
     }
 
     const onSubmit = (e) => {
-        application ? console.log("updated") :
+        application ? console.log(application) :
             CreateApplication(formData, token)
     }
 

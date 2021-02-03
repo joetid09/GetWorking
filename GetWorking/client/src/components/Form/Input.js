@@ -8,8 +8,10 @@ const Input = ({ text,
     handleChange,
     name,
     id = name,
-    required = false
+    required = false,
+    value
 }) => {
+
     return (
         <>
             <label htmlFor={id}>{text}</label>
@@ -20,7 +22,11 @@ const Input = ({ text,
                 id={id}
                 type={type}
                 placeholder={placeholder}
-                onChange={handleChange} />
+                value={value}
+                onChange={handleChange}
+
+            />
+
         </>
     )
 }

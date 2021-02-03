@@ -6,7 +6,7 @@ const ApplicationUpdateModal = ({ setDetailModal, application }) => {
     return (
         <div>
             <ModalHeader>Update Application Information</ModalHeader>
-            <ApplicationCreate applicaiton={application} />
+            <ApplicationCreate application={application} />
             <Button
                 onClick={() => {
                     setDetailModal(false)
