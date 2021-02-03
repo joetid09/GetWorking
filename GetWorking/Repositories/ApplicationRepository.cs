@@ -22,13 +22,26 @@ namespace GetWorking.Repositories
             return _context.Application
                 .Where(ap => ap.UserProfileId == userProfileId)
                 .ToList();
+        }
 
-
+        public Application GetByApplicationId(int applicationId)
+        {
+            return _context.Application
+                .Include(ap => ap.UserProfile)
+                .Where(ap => ap.Id == applicationId)
+                .FirstOrDefault();
+           
         }
 
         public void Add(Application application)
         {
             _context.Add(application);
+            _context.SaveChanges();
+        }
+
+        public void Update(Application application)
+        {
+            _context.Entry(application).State = EntityState.Modified;
             _context.SaveChanges();
         }
 

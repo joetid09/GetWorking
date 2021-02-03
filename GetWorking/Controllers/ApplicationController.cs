@@ -29,6 +29,17 @@ namespace GetWorking.Controllers
             return Ok(_appRepo.GetByUserProfileId(user.Id));
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetApplicationDetail(int id)
+        {
+            //var user = GetCurrentUserProfile();
+           var applicationDetails = _appRepo.GetByApplicationId(id);
+            //if (user.Id != id) {
+            //    return Unauthorized();
+            //        }
+         return Ok(applicationDetails);
+        }
+
         [HttpPost]
         public IActionResult Application(Application application)
         {
@@ -36,6 +47,21 @@ namespace GetWorking.Controllers
             application.UserProfileId = user.Id;
             _appRepo.Add(application);
             return base.Created("", application);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateApplication(int id, Application application)
+        {
+            var OriginalApplication = _appRepo.GetByApplicationId(id);
+            if(id != application.Id)
+            {
+                return BadRequest();
+            }
+            OriginalApplication.Company = application.Company;
+            OriginalApplication.JobTitle = application.JobTitle;
+            OriginalApplication.DateApplied = application.DateApplied;
+            _appRepo.Update(OriginalApplication);
+            return Ok();
         }
 
         private UserProfile GetCurrentUserProfile()

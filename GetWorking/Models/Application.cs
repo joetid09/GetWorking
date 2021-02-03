@@ -19,5 +19,6 @@ namespace GetWorking.Models
         public DateTime DateApplied { get; set; }
         [Required]
         public int UserProfileId { get; set; }
+        public UserProfile UserProfile { get; set; }
     }
 }

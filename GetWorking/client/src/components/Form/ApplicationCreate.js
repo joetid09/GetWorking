@@ -3,11 +3,10 @@ import Form from "./Form"
 import { ApplicationForm } from "./FormElements"
 import { UserProfileContext } from '../../providers/UserProfileProvider'
 
-const ApplicationCreate = () => {
+const ApplicationCreate = ({ application }) => {
     const [formData, setFormData] = useState({})
     const { getToken } = useContext(UserProfileContext)
 
-    const formTitle = "Log a new Application"
     const token = getToken();
 
     const CreateApplication = (formData, token) => {
@@ -23,18 +22,35 @@ const ApplicationCreate = () => {
             body: JSON.stringify(formData)
         })
     }
+    const UpdateApplication = (formData, token) => {
+        //currently calling token.i due to there being 5 fields on token and "i" having the actual token
+        fetch(`/api/application/${application.id}`, {
+            method: "UPDATE",
+            headers: {
+                Authorization:
+                    `Bearer ${token.i}`,
+                "Content-Type": "application/JSON"
+
+            },
+            body: JSON.stringify(formData)
+        })
+    }
 
     const onSubmit = (e) => {
-        CreateApplication(formData, token)
+        application ? console.log(application) :
+            CreateApplication(formData, token)
     }
+
     return (
+
         <Form
-            formTitle={formTitle}
+            // formTitle={formTitle}
             setFormData={setFormData}
             formStructure={ApplicationForm}
             formData={formData}
-            buttonText="add application"
+            buttonText="Save"
             onSubmit={onSubmit}
+            application={application}
         />
     )
 }

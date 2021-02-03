@@ -6,7 +6,7 @@ import Register from "../pages/Register";
 import HomePage from "../pages/HomePage"
 import NewApplication from "./Applications/NewApplication";
 import ApplicationList from "./Applications/ApplicationList"
-
+import ApplicationDetail from "./Applications/ApplicationDetail"
 
 
 const ApplicationViews = () => {
@@ -27,7 +27,10 @@ const ApplicationViews = () => {
                 {isLoggedIn ? <NewApplication /> : <Redirect to="/login" />}
             </Route>
             <Route path="/applications">
-                <ApplicationList />
+                {isLoggedIn ? <ApplicationList /> : <Redirect to="/login" />}
+            </Route>
+            <Route path="/application/details/:appId">
+                {isLoggedIn ? <ApplicationDetail /> : <Redirect to="/login" />}
             </Route>
         </Switch>
     );

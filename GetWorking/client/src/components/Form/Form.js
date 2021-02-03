@@ -10,16 +10,20 @@ const Form = ({
     setFormData,
     formTitle,
     buttonText,
-    onSubmit
+    onSubmit,
+    application
 }) => {
     const handleChange = event => {
+        console.log(formStructure)
         const formDataCopy = { ...formData };
         formDataCopy[event.target.name] = event.target.value;
         setFormData(formDataCopy);
     }
 
     return (
+
         <form onSubmit={onSubmit}>
+
             <h2>{formTitle}</h2>
             {formStructure.map(f => (
                 <Input
@@ -30,7 +34,9 @@ const Form = ({
                     text={f.text}
                     handleChange={handleChange}
                     placeholder={f.placeholder}
+                    value={application[`${f.name}`]}
                     required={f.required}
+
                 />
             ))}
             <Button type='submit'>{buttonText}</Button>

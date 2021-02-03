@@ -20,7 +20,7 @@ CREATE TABLE [Application] (
   [Id] integer PRIMARY KEY IDENTITY,
   [JobTitle] nvarchar(50) NOT NULL,
   [Company] nvarchar(50) NOT NULL,
-  [DateApplied] datetime NOT NULL,
+  [DateApplied] date NOT NULL,
   [UserProfileId] integer NOT NULL
 )
 
