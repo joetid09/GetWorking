@@ -22,22 +22,22 @@ const ApplicationCreate = ({ application, setApplication }) => {
             body: JSON.stringify(formData)
         })
     }
-    const UpdateApplication = (formData, token) => {
+    const UpdateApplication = (application, token) => {
         //currently calling token.i due to there being 5 fields on token and "i" having the actual token
         fetch(`/api/application/${application.id}`, {
-            method: "UPDATE",
+            method: "PUT",
             headers: {
                 Authorization:
                     `Bearer ${token.i}`,
                 "Content-Type": "application/JSON"
 
             },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(application)
         })
     }
 
     const onSubmit = (e) => {
-        application ? console.log(application) :
+        application ? UpdateApplication(application, token) :
             CreateApplication(formData, token)
     }
 
