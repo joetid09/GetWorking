@@ -12,6 +12,7 @@ const Input = ({ text,
     value
 }) => {
 
+    console.log("values", value)
     return (
         <>
             <label htmlFor={id}>{text}</label>

@@ -34,10 +34,12 @@ namespace GetWorking.Controllers
         {
             //var user = GetCurrentUserProfile();
            var applicationDetails = _appRepo.GetByApplicationId(id);
+            var date = applicationDetails.DateApplied.Date;
+            applicationDetails.DateApplied = date;
             //if (user.Id != id) {
             //    return Unauthorized();
             //        }
-         return Ok(applicationDetails);
+            return Ok(applicationDetails);
         }
 
         [HttpPost]

@@ -8,6 +8,7 @@ import { Modal, ModalHeader, Button } from 'reactstrap'
 const ApplicationDetail = () => {
     const [application, setApplication] = useState({})
     const [detailModal, setDetailModal] = useState(false)
+    const [deleteModal, setDeleteModal] = useState(false)
     const { getToken } = useContext(UserProfileContext)
     const { appId } = useParams();
     const token = getToken()
@@ -33,7 +34,7 @@ const ApplicationDetail = () => {
                 <ApplicationDetailCard application={application} setDetailModal={setDetailModal} detailModal={detailModal} />
                 :
                 <Modal isOpen={detailModal}>
-                    <ApplicationUpdateModal setDetailModal={setDetailModal} application={application} />
+                    <ApplicationUpdateModal setDetailModal={setDetailModal} application={application} setApplication={setApplication} />
                 </Modal>
             }
         </div>
