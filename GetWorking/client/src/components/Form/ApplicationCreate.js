@@ -3,7 +3,7 @@ import Form from "./Form"
 import { ApplicationForm } from "./FormElements"
 import { UserProfileContext } from '../../providers/UserProfileProvider'
 
-const ApplicationCreate = ({ application }) => {
+const ApplicationCreate = ({ application, setApplication }) => {
     const [formData, setFormData] = useState({})
     const { getToken } = useContext(UserProfileContext)
 
@@ -51,6 +51,7 @@ const ApplicationCreate = ({ application }) => {
             buttonText="Save"
             onSubmit={onSubmit}
             application={application}
+            setApplication={setApplication}
         />
     )
 }
