@@ -8,6 +8,7 @@ import { Modal, ModalHeader, Button } from 'reactstrap'
 const ApplicationDetail = () => {
     const [application, setApplication] = useState({})
     const [detailModal, setDetailModal] = useState(false)
+    const [deleteModal, setDeleteModal] = useState(false)
     const { getToken } = useContext(UserProfileContext)
     const { appId } = useParams();
     const token = getToken()

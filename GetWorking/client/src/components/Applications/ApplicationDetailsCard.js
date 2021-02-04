@@ -13,7 +13,8 @@ const ApplicationDetailCard = ({ application, setDetailModal }) => {
             <h2>{application.jobTitle}</h2>
             <h1>something here</h1>
             <p>applied on   {dayjs(application.dateApplied).format('YYYY/DD/MM')}</p>
-            <Button onClick={(() => setDetailModal(true))}>details</Button>
+            <Button onClick={(() => setDetailModal(true))}>Edit</Button>
+            {/* <Button onClick={(() => setDeleteModal(true))}> Delete</Button> */}
         </div>
     )
 }

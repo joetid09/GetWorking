@@ -18,7 +18,6 @@ const Form = ({
 }) => {
 
     const handleChange = event => {
-        console.log(formStructure)
         let applicationCopy = { ...application }
         if (application) applicationCopy[event.target.name] = event.target.value
         const formDataCopy = { ...formData };
@@ -31,9 +30,6 @@ const Form = ({
         }
     }
 
-    useEffect(() => {
-        console.log(application)
-    })
     return (
 
         <form onSubmit={onSubmit}>
