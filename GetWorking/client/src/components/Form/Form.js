@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "reactstrap"
 import Input from "./Input"
+import dayjs from 'dayjs'
 // import Button from "./Button"
 // import classes from "../Form.module.css"
+
 
 const Form = ({
     formStructure,
@@ -14,6 +16,7 @@ const Form = ({
     application,
     setApplication
 }) => {
+
     const handleChange = event => {
         console.log(formStructure)
         let applicationCopy = { ...application }
@@ -23,15 +26,20 @@ const Form = ({
 
 
         setFormData(formDataCopy);
-        if (application) { setApplication(applicationCopy) }
+        if (application) {
+            setApplication(applicationCopy)
+        }
     }
 
+    useEffect(() => {
+        console.log(application)
+    })
     return (
 
         <form onSubmit={onSubmit}>
 
             <h2>{formTitle}</h2>
-            {application ?
+            {application ? (
                 formStructure.map(f => (
                     <Input
                         key={f.name}
@@ -45,7 +53,7 @@ const Form = ({
                         required={f.required}
 
                     />
-                ))
+                )))
                 :
                 formStructure.map(f => (
                     <Input

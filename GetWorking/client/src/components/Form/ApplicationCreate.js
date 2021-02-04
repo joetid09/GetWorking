@@ -9,6 +9,7 @@ const ApplicationCreate = ({ application, setApplication }) => {
 
     const token = getToken();
 
+
     const CreateApplication = (formData, token) => {
         //currently calling token.i due to there being 5 fields on token and "i" having the actual token
         fetch("/api/application", {
