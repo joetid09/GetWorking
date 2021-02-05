@@ -20,10 +20,15 @@ namespace GetWorking.Repositories
         public List<Event> GetByApplicationId(int applicationId)
         {
             return _context.Event
-                .Where(ep => ep.Id == applicationId)
+                .Where(ep => ep.ApplicationId == applicationId)
                 .ToList();
+        }
 
-
+        public Event GetEventById(int eventId)
+        {
+            return _context.Event
+                .Where(ep => ep.Id == eventId)
+                .FirstOrDefault();
         }
 
         public void Add(Event newEvent)
@@ -32,7 +37,11 @@ namespace GetWorking.Repositories
             _context.SaveChanges();
         }
 
-
+        public void Update(Application application)
+        {
+            _context.Entry(application).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
 
 
     }

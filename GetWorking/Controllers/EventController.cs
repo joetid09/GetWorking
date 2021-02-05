@@ -18,21 +18,17 @@ namespace GetWorking.Controllers
         {
             _repo = repo;
         }
-        [HttpGet("{userProfileId}")]
-        public IActionResult GetEvents(int eventId)
+        [HttpGet("{applicationId}")]
+        public IActionResult GetEvents(int applicationId)
         {
-            return Ok(_repo.GetByApplicationId(eventId));
+            return Ok(_repo.GetByApplicationId(applicationId));
         }
+        [HttpPost]
+        public IActionResult AddEvent(Event newEvent)
+        {
+            _repo.Add(newEvent);
+                return base.Created("", newEvent);
 
-        //[HttpPost]
-        //public IActionResult Post(Application application)
-        //{
-        //    _repo.Add(application);
-        //    return CreatedAtAction(
-        //        nameof(GetUserProfile),
-        //        new { firebaseUserId = userProfile.FirebaseUserId },
-        //        userProfile);
-        //}
-
+        }
     }
 }

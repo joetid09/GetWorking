@@ -15,7 +15,7 @@ namespace GetWorking.Models
         [Required]
         public DateTime Datecreated { get; set; }
         [Required]
-        public DataType DateToComplete { get; set; }
+        public DateTime DateToComplete { get; set; }
         [Required]
         [MaxLength(256)]
         public string Body { get; set; }
