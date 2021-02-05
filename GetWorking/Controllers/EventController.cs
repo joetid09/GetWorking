@@ -23,7 +23,7 @@ namespace GetWorking.Controllers
         {
             return Ok(_repo.GetByApplicationId(applicationId));
         }
-
+        [HttpPost]
         public IActionResult AddEvent(Event newEvent)
         {
             _repo.Add(newEvent);
