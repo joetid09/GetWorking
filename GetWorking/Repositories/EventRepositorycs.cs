@@ -20,7 +20,7 @@ namespace GetWorking.Repositories
         public List<Event> GetByApplicationId(int applicationId)
         {
             return _context.Event
-                .Where(ep => ep.Id == applicationId)
+                .Where(ep => ep.ApplicationId == applicationId)
                 .ToList();
 
 
