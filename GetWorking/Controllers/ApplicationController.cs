@@ -32,13 +32,13 @@ namespace GetWorking.Controllers
         [HttpGet("{id}")]
         public IActionResult GetApplicationDetail(int id)
         {
-            //var user = GetCurrentUserProfile();
+            var user = GetCurrentUserProfile();
            var applicationDetails = _appRepo.GetByApplicationId(id);
             var date = applicationDetails.DateApplied.Date;
             applicationDetails.DateApplied = date;
-            //if (user.Id != id) {
-            //    return Unauthorized();
-            //        }
+            if (user.Id != id) {
+               return Unauthorized();
+                    }
             return Ok(applicationDetails);
         }
 

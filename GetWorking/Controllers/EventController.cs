@@ -18,10 +18,10 @@ namespace GetWorking.Controllers
         {
             _repo = repo;
         }
-        [HttpGet("{userProfileId}")]
-        public IActionResult GetEvents(int eventId)
+        [HttpGet("{applicationId}")]
+        public IActionResult GetEvents(int applicationId)
         {
-            return Ok(_repo.GetByApplicationId(eventId));
+            return Ok(_repo.GetByApplicationId(applicationId));
         }
 
         //[HttpPost]
