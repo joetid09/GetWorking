@@ -24,15 +24,11 @@ namespace GetWorking.Controllers
             return Ok(_repo.GetByApplicationId(applicationId));
         }
 
-        //[HttpPost]
-        //public IActionResult Post(Application application)
-        //{
-        //    _repo.Add(application);
-        //    return CreatedAtAction(
-        //        nameof(GetUserProfile),
-        //        new { firebaseUserId = userProfile.FirebaseUserId },
-        //        userProfile);
-        //}
+        public IActionResult AddEvent(Event newEvent)
+        {
+            _repo.Add(newEvent);
+                return base.Created("", newEvent);
 
+        }
     }
 }
