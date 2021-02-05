@@ -22,8 +22,13 @@ namespace GetWorking.Repositories
             return _context.Event
                 .Where(ep => ep.ApplicationId == applicationId)
                 .ToList();
+        }
 
-
+        public Event GetEventById(int eventId)
+        {
+            return _context.Event
+                .Where(ep => ep.Id == eventId)
+                .FirstOrDefault();
         }
 
         public void Add(Event newEvent)
