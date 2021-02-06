@@ -12,9 +12,10 @@ const ApplicationDetailCard = ({ application, setDetailModal, events }) => {
         <div>
             <h2>{application.jobTitle}</h2>
             <p>applied on   {dayjs(application.dateApplied).format('YYYY/DD/MM')}</p>
+            <Button onClick={(() => { })}>Create new event</Button>
             <Button onClick={(() => setDetailModal(true))}>Edit</Button>
             {/* <Button onClick={(() => setDeleteModal(true))}> Delete</Button> */}
-        </div>
+        </div >
     )
 }
 
