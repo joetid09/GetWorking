@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
-import { useHistory, useState } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Button } from 'reactstrap'
 import dayjs from 'dayjs'
 
-const ApplicationDetailCard = ({ application, setDetailModal }) => {
+const ApplicationDetailCard = ({ application, setDetailModal, events }) => {
+
     var dayjs = require('dayjs')
     { dayjs(application.dateApplied).format('YYYY/DD/MM') }
 
-    useEffect((application) => { })
     return (
         <div>
             <h2>{application.jobTitle}</h2>
