@@ -4,6 +4,7 @@ import { UserProfileContext } from '../../providers/UserProfileProvider'
 import ApplicationDetailCard from './ApplicationDetailsCard'
 import ApplicationUpdateModal from './ApplicationUpdateModal'
 import { Modal, ModalHeader, Button } from 'reactstrap'
+import EventCard from '../Event/EventCard'
 
 const ApplicationDetail = () => {
     const [application, setApplication] = useState({})
@@ -45,8 +46,9 @@ const ApplicationDetail = () => {
     }
     return (
         <div>
-            {!detailModal ?
-                <ApplicationDetailCard application={application} setDetailModal={setDetailModal} detailModal={detailModal} events={events} />
+            {!detailModal ? (
+                <div className="detailsHeader"><ApplicationDetailCard application={application} setDetailModal={setDetailModal} detailModal={detailModal} events={events} /></div>,
+                <div className="eventsContainer">{events.map(e => <EventCard event={events} />)}</div>)
                 :
                 <Modal isOpen={detailModal}>
                     <ApplicationUpdateModal setDetailModal={setDetailModal} application={application} setApplication={setApplication} />
