@@ -46,9 +46,11 @@ const ApplicationDetail = () => {
     }
     return (
         <div>
-            {!detailModal ? (
-                <div className="detailsHeader"><ApplicationDetailCard application={application} setDetailModal={setDetailModal} detailModal={detailModal} events={events} /></div>,
-                <div className="eventsContainer">{events.map(e => <EventCard event={events} />)}</div>)
+            {!detailModal ?
+                <div>
+                    <div className="detailsHeader"> <ApplicationDetailCard application={application} setDetailModal={setDetailModal} detailModal={detailModal} events={events} /> </div>
+                    <div className="deventList">{events.map(e => <EventCard event={e} />)}</div>
+                </div>
                 :
                 <Modal isOpen={detailModal}>
                     <ApplicationUpdateModal setDetailModal={setDetailModal} application={application} setApplication={setApplication} />
