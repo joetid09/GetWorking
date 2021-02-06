@@ -27,8 +27,35 @@ namespace GetWorking.Controllers
         public IActionResult AddEvent(Event newEvent)
         {
             _repo.Add(newEvent);
-                return base.Created("", newEvent);
+            return base.Created("", newEvent);
 
         }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateEvent(int id, Event newEvent)
+        {
+            var OriginalEvent = _repo.GetEventById(id);
+            OriginalEvent.Title = newEvent.Title;
+            OriginalEvent.Body = newEvent.Body;
+            OriginalEvent.DateToComplete = newEvent.DateToComplete;
+            OriginalEvent.Status = newEvent.Status;
+            _repo.Update(OriginalEvent);
+            return Ok();
+
+        }
+
+        //private UserProfile GetCurrentUserProfile()
+        //{
+        //    try
+        //    {
+        //        var firebaseUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //        return _userProfileRepo.GetByFirebaseUserId(firebaseUserId);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
+        //}
+    //}
     }
 }

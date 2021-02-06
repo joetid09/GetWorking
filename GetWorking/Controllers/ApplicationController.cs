@@ -36,9 +36,9 @@ namespace GetWorking.Controllers
            var applicationDetails = _appRepo.GetByApplicationId(id);
             var date = applicationDetails.DateApplied.Date;
             applicationDetails.DateApplied = date;
-            if (user.Id != id) {
-               return Unauthorized();
-                    }
+            //if (user.Id != applicationDetails.UserProfileId) {
+            //   return Unauthorized();
+            //        }
             return Ok(applicationDetails);
         }
 
