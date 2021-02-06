@@ -37,9 +37,9 @@ namespace GetWorking.Repositories
             _context.SaveChanges();
         }
 
-        public void Update(Application application)
+        public void Update(Event newEvent)
         {
-            _context.Entry(application).State = EntityState.Modified;
+            _context.Entry(newEvent).State = EntityState.Modified;
             _context.SaveChanges();
         }
 

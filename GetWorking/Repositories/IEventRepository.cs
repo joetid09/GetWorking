@@ -7,6 +7,7 @@ namespace GetWorking.Repositories
     {
         void Add(Event newEvent);
         List<Event> GetByApplicationId(int applicationId);
-        void Update(Application application);
+        Event GetEventById(int eventId);
+        void Update(Event newEvent);
     }
 }
