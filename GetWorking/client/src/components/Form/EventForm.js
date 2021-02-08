@@ -12,30 +12,28 @@ const EventForm = ({
     setFormData,
     formTitle,
     buttonText,
-    onSubmit
-    // application,
-    // setApplication
+    onSubmit,
+    events,
+    setEvents
 }) => {
 
     const handleChange = event => {
-        // let applicationCopy = { ...application }
-        // if (application) applicationCopy[event.target.name] = event.target.value
+        let eventCopy = { ...events }
+        if (event) eventCopy[event.target.name] = event.target.value
         const formDataCopy = { ...formData };
         formDataCopy[event.target.name] = event.target.value;
 
 
         setFormData(formDataCopy);
-        // if (application) {
-        //     setApplication(applicationCopy)
-        // }
+        if (event) {
+            setEvents(eventCopy)
+        }
     }
 
     return (
 
         <form onSubmit={onSubmit}>
-
-            <h2>{formTitle}</h2>
-            {/* {application ? (
+            {events ? (
                 formStructure.map(f => (
                     <Input
                         key={f.name}
@@ -45,27 +43,27 @@ const EventForm = ({
                         text={f.text}
                         handleChange={handleChange}
                         placeholder={f.placeholder}
-                        value={application[`${f.name}`]}
+                        value={events[`${f.name}`]}
                         required={f.required}
 
                     />
                 )))
-                : */}
-            { formStructure.map(f => (
-                <Input
-                    key={f.name}
-                    type={f.type}
-                    name={f.name}
-                    id={f.id}
-                    text={f.text}
-                    handleChange={handleChange}
-                    placeholder={f.placeholder}
-                    required={f.required}
+                :
 
-                />
-            ))
+                formStructure.map(f => (
+                    <Input
+                        key={f.name}
+                        type={f.type}
+                        name={f.name}
+                        id={f.id}
+                        text={f.text}
+                        handleChange={handleChange}
+                        placeholder={f.placeholder}
+                        required={f.required}
+
+                    />
+                ))
             }
-            {/* } */}
             <Button type='submit'>{buttonText}</Button>
         </form>
     )

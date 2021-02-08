@@ -26,38 +26,37 @@ const EventCreate = ({ event, setEvent, application }) => {
                 JSON.stringify(formData)
         })
     }
-    // const UpdateApplication = (application, token) => {
-    //     //currently calling token.i due to there being 5 fields on token and "i" having the actual token
-    //     fetch(`/api/application/${application.id}`, {
-    //         method: "PUT",
-    //         headers: {
-    //             Authorization:
-    //                 `Bearer ${token.i}`,
-    //             "Content-Type": "application/JSON"
+    const UpdateEvent = (event, token) => {
+        //currently calling token.i due to there being 5 fields on token and "i" having the actual token
+        fetch(`/api/event/${event.id}`, {
+            method: "PUT",
+            headers: {
+                Authorization:
+                    `Bearer ${token.i}`,
+                "Content-Type": "application/JSON"
 
-    //         },
-    //         body: JSON.stringify(application)
-    //     })
-    // }
+            },
+            body: JSON.stringify(event)
+        })
+    }
 
     const onSubmit = (e) => {
         debugger;
-        // application ? UpdateApplication(application, token) :
-        formData.applicationId = application.id
+        event ? UpdateEvent(event, token) :
+            formData.applicationId = application.id
         CreateEvent(formData, token)
     }
 
     return (
 
         <EventForm
-            // formTitle={formTitle}
             setFormData={setFormData}
             formStructure={EventCreateForm}
             formData={formData}
             buttonText="Save"
             onSubmit={onSubmit}
             application={application}
-        // setApplication={setApplication}
+            setEvent={setEvent}
         />
     )
 }
