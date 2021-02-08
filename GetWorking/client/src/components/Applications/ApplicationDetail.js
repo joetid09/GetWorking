@@ -5,11 +5,13 @@ import ApplicationDetailCard from './ApplicationDetailsCard'
 import ApplicationUpdateModal from './ApplicationUpdateModal'
 import { Modal, ModalHeader, Button } from 'reactstrap'
 import EventCard from '../Event/EventCard'
+import EventCreateModal from '../Event/EventCreateModals'
 
 const ApplicationDetail = () => {
     const [application, setApplication] = useState({})
     const [events, setEvents] = useState([])
     const [detailModal, setDetailModal] = useState(false)
+    const [eventModal, setEventModal] = useState(false)
     const [deleteModal, setDeleteModal] = useState(false)
     const { getToken } = useContext(UserProfileContext)
     const { appId } = useParams();
@@ -18,7 +20,6 @@ const ApplicationDetail = () => {
     useEffect(() => {
         getEvent(appId)
         getApplication(appId)
-        console.log(events, application)
     }, [])
 
     const getApplication = (id) => {
@@ -46,15 +47,19 @@ const ApplicationDetail = () => {
     }
     return (
         <div>
-            {!detailModal ?
+            {!detailModal && !eventModal ?
                 <div>
-                    <div className="detailsHeader"> <ApplicationDetailCard application={application} setDetailModal={setDetailModal} detailModal={detailModal} events={events} /> </div>
+                    <div className="detailsHeader"> <ApplicationDetailCard application={application} setEventModal={setEventModal} setDetailModal={setDetailModal} detailModal={detailModal} events={events} /> </div>
                     <div className="deventList">{events.map(e => <EventCard event={e} />)}</div>
                 </div>
                 :
-                <Modal isOpen={detailModal}>
-                    <ApplicationUpdateModal setDetailModal={setDetailModal} application={application} setApplication={setApplication} />
+                eventModal ? <Modal isOpen={detailModal}>
+                    <EventCreateModal setEventModal={setEventModal} events={events} setEvents={setEvents} />
                 </Modal>
+                    :
+                    <Modal isOpen={detailModal}>
+                        <ApplicationUpdateModal setDetailModal={setDetailModal} application={application} setApplication={setApplication} />
+                    </Modal>
             }
         </div>
     )
