@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { Button } from 'reactstrap'
 import dayjs from 'dayjs'
 
-const ApplicationDetailCard = ({ application, setDetailModal, events, setEventModal }) => {
+const ApplicationDetailCard = ({ application, setDetailModal, setEventModal }) => {
 
     var dayjs = require('dayjs')
     { dayjs(application.dateApplied).format('YYYY/DD/MM') }

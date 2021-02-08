@@ -10,6 +10,7 @@ import EventCreateModal from '../Event/EventCreateModals'
 const ApplicationDetail = () => {
     const [application, setApplication] = useState({})
     const [events, setEvents] = useState([])
+    const [singleEvent, setEvent] = useState({})
     const [detailModal, setDetailModal] = useState(false)
     const [eventModal, setEventModal] = useState(false)
     const [deleteModal, setDeleteModal] = useState(false)
@@ -50,12 +51,12 @@ const ApplicationDetail = () => {
             {!detailModal && !eventModal ?
                 <div>
                     <div className="detailsHeader"> <ApplicationDetailCard application={application} setEventModal={setEventModal} setDetailModal={setDetailModal} detailModal={detailModal} events={events} /> </div>
-                    <div className="deventList">{events.map(e => <EventCard event={e} />)}</div>
+                    <div className="deventList">{events.map(e => <EventCard e={e} setEventModal={setEventModal} setEvent={setEvent} />)}</div>
                 </div>
                 :
                 eventModal ?
                     <Modal isOpen={eventModal}>
-                        <EventCreateModal setEventModal={setEventModal} events={events} setEvents={setEvents} application={application} />
+                        <EventCreateModal setEventModal={setEventModal} events={events} setEvent={setEvent} application={application} singleEvent={singleEvent} />
                     </Modal>
                     :
                     <Modal isOpen={detailModal}>

@@ -4,7 +4,7 @@ import { EventCreateForm } from "./FormElements"
 import EventForm from './EventForm.js'
 import { UserProfileContext } from '../../providers/UserProfileProvider'
 
-const EventCreate = ({ event, setEvent, application }) => {
+const EventCreate = ({ events, setEvent, application, singleEvent }) => {
     const [formData, setFormData] = useState({})
     const { getToken } = useContext(UserProfileContext)
 
@@ -26,9 +26,9 @@ const EventCreate = ({ event, setEvent, application }) => {
                 JSON.stringify(formData)
         })
     }
-    const UpdateEvent = (event, token) => {
+    const UpdateEvent = (singleEvent, token) => {
         //currently calling token.i due to there being 5 fields on token and "i" having the actual token
-        fetch(`/api/event/${event.id}`, {
+        fetch(`/api/event/${singleEvent.id}`, {
             method: "PUT",
             headers: {
                 Authorization:
@@ -36,15 +36,15 @@ const EventCreate = ({ event, setEvent, application }) => {
                 "Content-Type": "application/JSON"
 
             },
-            body: JSON.stringify(event)
+            body: JSON.stringify(singleEvent)
         })
     }
 
     const onSubmit = (e) => {
-        debugger;
-        event ? UpdateEvent(event, token) :
-            formData.applicationId = application.id
-        CreateEvent(formData, token)
+        formData.applicationId = application.id
+        singleEvent ? UpdateEvent(singleEvent, token)
+            : CreateEvent(formData, token)
+
     }
 
     return (
@@ -57,6 +57,7 @@ const EventCreate = ({ event, setEvent, application }) => {
             onSubmit={onSubmit}
             application={application}
             setEvent={setEvent}
+            singleEvent={singleEvent}
         />
     )
 }

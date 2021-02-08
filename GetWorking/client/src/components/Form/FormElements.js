@@ -5,7 +5,7 @@ const fields = {
     Title: { type: "text", name: "title", text: "Event Title", required: true },
     DateCreated: { type: "date", name: "DateCreated", text: "Date Created" },
     DateToComplete: { type: "date", name: "DateToComplete", text: "Date to Complete", required: true },
-    Body: { type: "textarea", name: "Body", text: "Notes", required: true }
+    Body: { type: "textfield", name: "body", text: "Notes", required: true }
 
 }
 
@@ -17,7 +17,8 @@ export const ApplicationForm = [
 
 export const EventCreateForm = [
     fields.Title,
+    fields.Body,
     fields.DateCreated,
-    fields.DateToComplete,
-    fields.Body
+    fields.DateToComplete
+
 ]

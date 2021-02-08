@@ -14,26 +14,28 @@ const EventForm = ({
     buttonText,
     onSubmit,
     events,
-    setEvents
+    setEvent,
+    singleEvent
 }) => {
 
     const handleChange = event => {
-        let eventCopy = { ...events }
-        if (event) eventCopy[event.target.name] = event.target.value
+        let eventCopy = { ...singleEvent }
+        if (singleEvent) eventCopy[event.target.name] = event.target.value
         const formDataCopy = { ...formData };
         formDataCopy[event.target.name] = event.target.value;
 
 
         setFormData(formDataCopy);
-        if (event) {
-            setEvents(eventCopy)
+        if (singleEvent) {
+            setEvent(eventCopy)
         }
     }
 
     return (
 
         <form onSubmit={onSubmit}>
-            {events ? (
+            {singleEvent ? (
+                <h1>update card</h1>,
                 formStructure.map(f => (
                     <Input
                         key={f.name}
@@ -43,7 +45,7 @@ const EventForm = ({
                         text={f.text}
                         handleChange={handleChange}
                         placeholder={f.placeholder}
-                        value={events[`${f.name}`]}
+                        value={singleEvent[`${f.name}`]}
                         required={f.required}
 
                     />
