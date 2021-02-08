@@ -53,9 +53,10 @@ const ApplicationDetail = () => {
                     <div className="deventList">{events.map(e => <EventCard event={e} />)}</div>
                 </div>
                 :
-                eventModal ? <Modal isOpen={detailModal}>
-                    <EventCreateModal setEventModal={setEventModal} events={events} setEvents={setEvents} />
-                </Modal>
+                eventModal ?
+                    <Modal isOpen={eventModal}>
+                        <EventCreateModal setEventModal={setEventModal} events={events} setEvents={setEvents} />
+                    </Modal>
                     :
                     <Modal isOpen={detailModal}>
                         <ApplicationUpdateModal setDetailModal={setDetailModal} application={application} setApplication={setApplication} />
