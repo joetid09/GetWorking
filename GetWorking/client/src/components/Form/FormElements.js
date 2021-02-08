@@ -15,7 +15,7 @@ export const ApplicationForm = [
     fields.DateApplied
 ]
 
-export const EventForm = [
+export const EventCreateForm = [
     fields.Title,
     fields.DateCreated,
     fields.DateToComplete,

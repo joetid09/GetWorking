@@ -55,7 +55,7 @@ const ApplicationDetail = () => {
                 :
                 eventModal ?
                     <Modal isOpen={eventModal}>
-                        <EventCreateModal setEventModal={setEventModal} events={events} setEvents={setEvents} />
+                        <EventCreateModal setEventModal={setEventModal} events={events} setEvents={setEvents} application={application} />
                     </Modal>
                     :
                     <Modal isOpen={detailModal}>

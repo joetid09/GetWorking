@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react"
 import Form from "./Form"
-import { EventForm } from "./FormElements"
+import { EventCreateForm } from "./FormElements"
+import EventForm from './EventForm.js'
 import { UserProfileContext } from '../../providers/UserProfileProvider'
 
-const EventCreate = ({ event, setEvent }) => {
+const EventCreate = ({ event, setEvent, application }) => {
     const [formData, setFormData] = useState({})
     const { getToken } = useContext(UserProfileContext)
 
@@ -11,6 +12,7 @@ const EventCreate = ({ event, setEvent }) => {
 
 
     const CreateEvent = (formData, token) => {
+        debugger;
         //currently calling token.i due to there being 5 fields on token and "i" having the actual token
         fetch("/api/event", {
             method: "POST",
@@ -20,7 +22,8 @@ const EventCreate = ({ event, setEvent }) => {
                 "Content-Type": "application/JSON"
 
             },
-            body: JSON.stringify(formData)
+            body:
+                JSON.stringify(formData)
         })
     }
     // const UpdateApplication = (application, token) => {
@@ -38,20 +41,22 @@ const EventCreate = ({ event, setEvent }) => {
     // }
 
     const onSubmit = (e) => {
+        debugger;
         // application ? UpdateApplication(application, token) :
+        formData.applicationId = application.id
         CreateEvent(formData, token)
     }
 
     return (
 
-        <Form
+        <EventForm
             // formTitle={formTitle}
             setFormData={setFormData}
-            formStructure={EventForm}
+            formStructure={EventCreateForm}
             formData={formData}
             buttonText="Save"
             onSubmit={onSubmit}
-        // application={application}
+            application={application}
         // setApplication={setApplication}
         />
     )
