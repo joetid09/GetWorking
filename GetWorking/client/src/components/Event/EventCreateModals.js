@@ -6,7 +6,7 @@ const EventCreateModal = ({ setEventModal, events, setEvents }) => {
     return (
         <div>
             <ModalHeader>Create a a event</ModalHeader>
-            {/* <EventCreate events={events} setEventModal={setEventModal} /> */}
+            <EventCreate events={events} setEventModal={setEventModal} />
             <Button
                 onClick={() => {
                     setEventModal(false)
