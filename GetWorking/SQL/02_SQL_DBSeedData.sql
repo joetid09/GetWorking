@@ -6,15 +6,15 @@ insert into UserProfile (Id, FirebaseUserId, FirstName, LastName, Email, CreateD
 set identity_insert [UserProfile] off
 
 set identity_insert [Application] on
-insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId) values (1, 'Full Stack Developer' ,'Dayton Freight', '2021-01-08', 1);
-insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId) values (2, 'QA Lead' ,'HCA', '2020-10-11', 2);
-insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId) values (3, 'Backend Engineer' ,'Bolt Systems', '2020-12-24', 3);
-insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId) values (4, 'Code Monkey' ,'LocalRoasters', '2020-08-12', 1);
-insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId) values (5, 'Front End Developer' ,'Rover', '2021-01-08', 2);
-insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId) values (6, 'Full Stack Developer' ,'Lantern', '2021-01-15', 3);
-insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId) values (7, 'Wordpress Wizard' ,'Kimbel Mechanical', '2021-01-22', 1);
-insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId) values (8, 'React Dev' ,'Hoover Manufacturing', '2020-01-08', 2);
-insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId) values (9, 'Graphic Designer' ,'Lab Case Studies', '2021-01-01', 3);
+insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId, Source) values (1, 'Full Stack Developer' ,'Dayton Freight', '2021-01-08', 1, 'linkedIn');
+insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId, Source) values (2, 'QA Lead' ,'HCA', '2020-10-11', 2, 'LinkedIn');
+insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId, Source) values (3, 'Backend Engineer' ,'Bolt Systems', '2020-12-24', 3, 'Indeed');
+insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId, Source) values (4, 'Code Monkey' ,'LocalRoasters', '2020-08-12', 1, 'LinkedIn');
+insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId, Source) values (5, 'Front End Developer' ,'Rover', '2021-01-08', 2, 'Indeed');
+insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId, Source) values (6, 'Full Stack Developer' ,'Lantern', '2021-01-15', 3, 'LinkedIn');
+insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId, Source) values (7, 'Wordpress Wizard' ,'Kimbel Mechanical', '2021-01-22', 1, 'Indeed');
+insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId, Source) values (8, 'React Dev' ,'Hoover Manufacturing', '2020-01-08', 2, 'LinkedIn');
+insert into [Application] (Id, JobTitle, Company, DateApplied, UserProfileId, Source) values (9, 'Graphic Designer' ,'Lab Case Studies', '2021-01-01', 3, 'LinkedIn');
 set identity_insert [Application] off
 
 set identity_insert [ApplicationTag] on

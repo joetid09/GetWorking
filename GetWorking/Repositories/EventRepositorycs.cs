@@ -43,6 +43,11 @@ namespace GetWorking.Repositories
             _context.SaveChanges();
         }
 
+        public void Delete(Event oldEvent)
+        {
+            _context.Remove(oldEvent);
+            _context.SaveChanges();
+        }
 
     }
 }

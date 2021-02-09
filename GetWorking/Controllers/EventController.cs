@@ -62,5 +62,13 @@ namespace GetWorking.Controllers
             }
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var oldEvent = _repo.GetEventById(id);
+            _repo.Delete(oldEvent);
+            return Ok();
+        }
     }
 }

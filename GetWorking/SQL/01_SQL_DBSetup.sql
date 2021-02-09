@@ -21,7 +21,8 @@ CREATE TABLE [Application] (
   [JobTitle] nvarchar(50) NOT NULL,
   [Company] nvarchar(50) NOT NULL,
   [DateApplied] date NOT NULL,
-  [UserProfileId] integer NOT NULL
+  [UserProfileId] integer NOT NULL,
+  [Source] nvarchar(100)
 )
 
 CREATE TABLE [ApplicationTag] (
@@ -44,6 +45,7 @@ CREATE TABLE [Tag] (
 [Id] integer PRIMARY KEY IDENTITY,
 [Name] nvarchar(25) NOT NULL
 )
+
 CREATE TABLE [UserProfile] (
   [Id] integer PRIMARY KEY IDENTITY,
   [FirebaseUserId] NVARCHAR(28) NOT NULL,
