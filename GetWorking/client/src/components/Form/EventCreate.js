@@ -12,7 +12,6 @@ const EventCreate = ({ events, setEvent, application, singleEvent }) => {
 
 
     const CreateEvent = (formData, token) => {
-        debugger;
         //currently calling token.i due to there being 5 fields on token and "i" having the actual token
         fetch("/api/event", {
             method: "POST",
@@ -42,7 +41,6 @@ const EventCreate = ({ events, setEvent, application, singleEvent }) => {
     }
 
     const onSubmit = (e) => {
-        debugger;
         formData.applicationId = application.id
         singleEvent ? UpdateEvent(singleEvent, token)
             : CreateEvent(formData, token)
