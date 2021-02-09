@@ -3,6 +3,7 @@ import { Jumbotron, Button, Container } from 'reactstrap'
 import dayjs from 'dayjs'
 
 const EventCard = ({ e, setEvent, setUpdateEventModal, getEvent }) => {
+    console.log(e)
     var dayjs = require('dayjs')
     const UpdateStatus = (e) => {
         fetch(`/api/event/updateStatus/${e.id}`, {
@@ -14,6 +15,14 @@ const EventCard = ({ e, setEvent, setUpdateEventModal, getEvent }) => {
         })
             .then(getEvent(e.applicationId))
     }
+    const Delete = (e) => {
+
+        return fetch(`/api/event/${e.id}`, {
+            method: "DELETE",
+        })
+            .then(getEvent(e.applicationId))
+    }
+
 
     return (
         <div>
@@ -26,6 +35,7 @@ const EventCard = ({ e, setEvent, setUpdateEventModal, getEvent }) => {
                         Completed! ✔️
                     </h4>
                 }
+                <Button onClick={() => Delete(e)}>delete</Button>
                 <p className="lead">Due:{dayjs(e.dateToComplete).format('YYYY/DD/MM')}</p>
                 <hr className="my-2"></hr>
                 <h2 className="display-5">Notes</h2>
