@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Jumbotron, Button, Container } from 'reactstrap'
 import dayjs from 'dayjs'
 
-const EventCard = ({ e, setEventModal, setEvent }) => {
+const EventCard = ({ e, setEventModal, setEvent, setUpdateEventModal }) => {
     var dayjs = require('dayjs')
 
     return (
@@ -17,7 +17,7 @@ const EventCard = ({ e, setEventModal, setEvent }) => {
                 <p className="lead">{e.body}</p>
                 <Button onClick={(() => {
                     setEvent(e)
-                    setEventModal(true)
+                    setUpdateEventModal(true)
                 }
                 )}> edit</Button>
                 <Button onClick={() => { }}>Completed?</Button>

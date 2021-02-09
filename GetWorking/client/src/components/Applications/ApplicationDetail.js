@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { UserProfileContext } from '../../providers/UserProfileProvider'
 import ApplicationDetailCard from './ApplicationDetailsCard'
 import ApplicationUpdateModal from './ApplicationUpdateModal'
+import EventUpdateModal from '../Event/EventUpdateModal'
 import { Modal, ModalHeader, Button } from 'reactstrap'
 import EventCard from '../Event/EventCard'
 import EventCreateModal from '../Event/EventCreateModals'
@@ -13,6 +14,7 @@ const ApplicationDetail = () => {
     const [singleEvent, setEvent] = useState({})
     const [detailModal, setDetailModal] = useState(false)
     const [eventModal, setEventModal] = useState(false)
+    const [updateEventModal, setUpdateEventModal] = useState(false)
     const [deleteModal, setDeleteModal] = useState(false)
     const { getToken } = useContext(UserProfileContext)
     const { appId } = useParams();
@@ -48,20 +50,31 @@ const ApplicationDetail = () => {
     }
     return (
         <div>
-            {!detailModal && !eventModal ?
-                <div>
-                    <div className="detailsHeader"> <ApplicationDetailCard application={application} setEventModal={setEventModal} setDetailModal={setDetailModal} detailModal={detailModal} events={events} /> </div>
-                    <div className="deventList">{events.map(e => <EventCard e={e} setEventModal={setEventModal} setEvent={setEvent} />)}</div>
-                </div>
-                :
+            {
+
+
                 eventModal ?
                     <Modal isOpen={eventModal}>
-                        <EventCreateModal setEventModal={setEventModal} events={events} setEvent={setEvent} application={application} singleEvent={singleEvent} />
+                        <EventCreateModal setEventModal={setEventModal} events={events} setEvent={setEvent} application={application} />
                     </Modal>
                     :
-                    <Modal isOpen={detailModal}>
-                        <ApplicationUpdateModal setDetailModal={setDetailModal} application={application} setApplication={setApplication} />
-                    </Modal>
+                    detailModal ?
+                        <Modal isOpen={detailModal}>
+                            <ApplicationUpdateModal setDetailModal={setDetailModal} application={application} setApplication={setApplication} />
+                        </Modal>
+                        :
+                        updateEventModal ? (console.log(singleEvent),
+                            <Modal isOpen={updateEventModal}>
+                                <EventUpdateModal setDetailModal={setDetailModal} application={application} setApplication={setApplication} setUpdateEventModal={setUpdateEventModal} singleEvent={singleEvent} setEvent={setEvent} />
+                            </Modal>
+                        )
+                            :
+                            <div>
+                                <div className="detailsHeader"> <ApplicationDetailCard application={application} setEventModal={setEventModal} setDetailModal={setDetailModal} detailModal={detailModal} events={events} /> </div>
+                                <div className="deventList">{events.map(e => <EventCard e={e} setEventModal={setEventModal} setEvent={setEvent} setUpdateEventModal={setUpdateEventModal} />)}</div>
+                            </div>
+
+
             }
         </div>
     )

@@ -2,15 +2,15 @@ import React from 'react'
 import { ModalHeader, Button } from 'reactstrap'
 import EventCreate from '../Form/EventCreate'
 
-const EventCreateModal = ({ setEventModal, events, setEvent, application, singleEvent }) => {
-    console.log(singleEvent)
+const EventCreateModal = ({ setEventModal, events, setEvent, application }) => {
     return (
         <div>
             <ModalHeader>Create a a event</ModalHeader>
-            <EventCreate events={events} setEventModal={setEventModal} application={application} singleEvent={singleEvent} setEvent={setEvent} />
+            <EventCreate events={events} setEventModal={setEventModal} application={application} />
             <Button
                 onClick={() => {
                     setEventModal(false)
+                    setEvent(null)
                 }}>Cancel</Button>
         </div>
     )

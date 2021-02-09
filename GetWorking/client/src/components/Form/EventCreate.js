@@ -25,6 +25,7 @@ const EventCreate = ({ events, setEvent, application, singleEvent }) => {
             body:
                 JSON.stringify(formData)
         })
+
     }
     const UpdateEvent = (singleEvent, token) => {
         //currently calling token.i due to there being 5 fields on token and "i" having the actual token
@@ -41,6 +42,7 @@ const EventCreate = ({ events, setEvent, application, singleEvent }) => {
     }
 
     const onSubmit = (e) => {
+        debugger;
         formData.applicationId = application.id
         singleEvent ? UpdateEvent(singleEvent, token)
             : CreateEvent(formData, token)
