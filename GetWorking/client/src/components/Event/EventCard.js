@@ -10,7 +10,12 @@ const EventCard = ({ e, setEventModal, setEvent, setUpdateEventModal }) => {
             <Jumbotron>
 
                 <h1 className="display-3">{e.title}</h1>
-                <p className="lead">Created: {dayjs(e.datecreated).format('YYYY/DD/MM')}</p>
+                {e.status == 1 ? <div>
+                    <Button onClick={() => { }}>Completed?</Button>
+                </div> : <h4 classname="display-5">
+                        Completed! ✔️
+                    </h4>
+                }
                 <p className="lead">Due:{dayjs(e.dateToComplete).format('YYYY/DD/MM')}</p>
                 <hr className="my-2"></hr>
                 <h2 className="display-5">Notes</h2>
@@ -20,7 +25,7 @@ const EventCard = ({ e, setEventModal, setEvent, setUpdateEventModal }) => {
                     setUpdateEventModal(true)
                 }
                 )}> edit</Button>
-                <Button onClick={() => { }}>Completed?</Button>
+
             </Jumbotron>
         </div >
     )
