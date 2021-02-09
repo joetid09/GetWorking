@@ -71,7 +71,7 @@ const ApplicationDetail = () => {
                             :
                             <div>
                                 <div className="detailsHeader"> <ApplicationDetailCard application={application} setEventModal={setEventModal} setDetailModal={setDetailModal} detailModal={detailModal} events={events} getApplication={getApplication} /> </div>
-                                <div className="deventList">{events.map(e => <EventCard e={e} setEventModal={setEventModal} setEvent={setEvent} setUpdateEventModal={setUpdateEventModal} getEvent={getEvent} />)}</div>
+                                <div className="deventList">{events.map(e => <EventCard e={e} setEventModal={setEventModal} setEvent={setEvent} setUpdateEventModal={setUpdateEventModal} getEvent={getEvent} getApplication={getApplication} />)}</div>
                             </div>
 
 

@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import {
-    Form,
-    FormGroup,
-    Card,
-    CardBody,
-    CardHeader,
-    Input,
     Button,
-    CardFooter,
-    Modal, ModalHeader, ModalBody, ModalFooter,
+    Modal, ModalHeader,
+    ModalBody, ModalFooter,
 } from "reactstrap";
 import dayjs from 'dayjs'
 
@@ -50,7 +44,6 @@ const ApplicationDetailCard = ({ application, setDetailModal, setEventModal, get
                         <Button onClick={(() => setEventModal(true))}> Create new event</Button>
                         <Button onClick={(() => setDetailModal(true))}>Edit</Button>
                         <Button onClick={(() => { setPendingDelete(true) })}>delete</Button>
-                        {/* <Button onClick={(() => setDeleteModal(true))}> Delete</Button> */}
                     </div>)
             }
         </div >
