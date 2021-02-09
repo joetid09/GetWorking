@@ -1,6 +1,7 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import ApplicationViews from "./components/ApplicationViews";
 import { UserProfileProvider } from "./providers/UserProfileProvider";
+import AppHeader from "./components/AppHeader"
 import "./App.css";
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
       {/* <ToastContainer position="bottom-right" hideProgressBar /> */}
       <UserProfileProvider>
         <Router>
-          {/* <AppHeader /> */}
+          <AppHeader />
           <ApplicationViews />
         </Router>
       </UserProfileProvider>

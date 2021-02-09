@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import {
     Collapse,
     Navbar,
@@ -14,7 +14,7 @@ import {
 import { UserProfileContext } from "../providers/UserProfileProvider";
 
 const AppHeader = () => {
-    const { getCurrentUser, logout, isAdmin } = useContext(UserProfileContext);
+    const { getCurrentUser, logout } = useContext(UserProfileContext);
     const user = getCurrentUser();
     const history = useHistory();
     const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +23,7 @@ const AppHeader = () => {
 
     const logoutAndReturn = () => {
         return logout().then(() => {
-            toast.dark("You are now logged out");
+            // toast.dark("You are now logged out");
             history.push("/login");
         });
     };
@@ -48,56 +48,16 @@ const AppHeader = () => {
                         {user ? (
                             <>
                                 <NavItem>
-                                    <NavLink to="/" tag={Link}>
-                                        Explore
+                                    <NavLink to="/newApplication" tag={Link}>
+                                        New Application
                   </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink to="/create/post" tag={Link}>
-                                        New Post
+                                    <NavLink to="/applications" tag={Link}>
+                                        Applications
                   </NavLink>
                                 </NavItem>
-                                <NavItem>
-                                    <NavLink to="/mypost" tag={Link}>
-                                        My Post
-                  </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink to="/myprofile" tag={Link}>
-                                        My Profile
-                  </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink to="/subscription" tag={Link}>
-                                        Subscription
-                  </NavLink>
-                                </NavItem>
-                                {isAdmin() && (
-                                    <>
-                                        <NavItem>
-                                            <NavLink to="/categories" tag={Link}>
-                                                Categories
-                      </NavLink>
-                                        </NavItem>
-                                        <NavItem>
-                                            <NavLink to="/tags" tag={Link}>
-                                                Tags
-                      </NavLink>
-                                        </NavItem>
-                                        <NavItem>
-                                            <NavLink to="/approval" tag={Link}>
-                                                Post Approval
-                      </NavLink>
-                                        </NavItem>
-                                    </>
-                                )}
-                                {isAdmin() && (
-                                    <NavItem>
-                                        <NavLink to="/profiles" tag={Link}>
-                                            Profiles
-                    </NavLink>
-                                    </NavItem>
-                                )}
+
                                 <NavItem>
                                     <NavLink tag={Link} to="/" onClick={logoutAndReturn}>
                                         Logout
@@ -121,7 +81,7 @@ const AppHeader = () => {
                     </Nav>
                     {user ? (
                         <NavbarText className="d-sm-none d-md-block">
-                            Welcome {user.displayName}
+                            Welcome {user.firstName}
                         </NavbarText>
                     ) : null}
                 </Collapse>
