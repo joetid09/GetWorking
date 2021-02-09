@@ -20,5 +20,6 @@ namespace GetWorking.Models
         [Required]
         public int UserProfileId { get; set; }
         public UserProfile UserProfile { get; set; }
+        public List<Event> Events { get; set; }
     }
 }

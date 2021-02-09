@@ -44,8 +44,9 @@ namespace GetWorking.Repositories
             _context.Entry(application).State = EntityState.Modified;
             _context.SaveChanges();
         }
-        public void Delete(Application oldApp)
+        public void Delete(Application oldApp, List<Event> eventsList)
         {
+            _context.RemoveRange(eventsList);
             _context.Remove(oldApp);
             _context.SaveChanges();
         }

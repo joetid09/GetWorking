@@ -17,10 +17,12 @@ namespace GetWorking.Controllers
     {
         private readonly IApplicationRepository _appRepo;
         private readonly IUserProfileRepository _userProfileRepo;
-        public ApplicationController(IApplicationRepository applicationRepo, IUserProfileRepository userProfileRepo)
+        private readonly IEventRepository _eventRepo;
+        public ApplicationController(IApplicationRepository applicationRepo, IUserProfileRepository userProfileRepo, IEventRepository eventRepository)
         {
             _appRepo = applicationRepo;
             _userProfileRepo = userProfileRepo;
+            _eventRepo = eventRepository;
         }
         [HttpGet]
         public IActionResult GetUserApplications()
@@ -69,8 +71,9 @@ namespace GetWorking.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            var eventList = _eventRepo.GetByApplicationId(id);
             var oldApp = _appRepo.GetByApplicationId(id);
-            _appRepo.Delete(oldApp);
+            _appRepo.Delete(oldApp, eventList);
             return Ok();
         }
         private UserProfile GetCurrentUserProfile()
