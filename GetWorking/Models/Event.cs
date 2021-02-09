@@ -13,7 +13,7 @@ namespace GetWorking.Models
         [MaxLength(50)]
         public string Title { get; set; }
         [Required]
-        public DateTime Datecreated { get; set; }
+        public DateTime DateCreated { get; set; }
         [Required]
         public DateTime DateToComplete { get; set; }
         [Required]
