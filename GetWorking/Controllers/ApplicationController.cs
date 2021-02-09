@@ -66,6 +66,13 @@ namespace GetWorking.Controllers
             return Ok();
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var oldApp = _appRepo.GetByApplicationId(id);
+            _appRepo.Delete(oldApp);
+            return Ok();
+        }
         private UserProfile GetCurrentUserProfile()
         {
             try
