@@ -44,18 +44,23 @@ namespace GetWorking.Controllers
 
         }
 
-        //private UserProfile GetCurrentUserProfile()
-        //{
-        //    try
-        //    {
-        //        var firebaseUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //        return _userProfileRepo.GetByFirebaseUserId(firebaseUserId);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return null;
-        //    }
-        //}
-    //}
+        [HttpPut("updateStatus/{id}")]
+        public IActionResult UpdateStatus(int id)
+        {
+            var OriginalEvent = _repo.GetEventById(id);
+            if(OriginalEvent.Status == 0)
+            {
+                OriginalEvent.Status = 1;
+                _repo.Update(OriginalEvent);
+                    return Ok();
+            }
+            else if (OriginalEvent.Status == 1)
+            {
+                OriginalEvent.Status = 0;
+                _repo.Update(OriginalEvent);
+                return Ok();
+            }
+            return NoContent();
+        }
     }
 }
