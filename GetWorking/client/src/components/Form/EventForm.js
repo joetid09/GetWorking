@@ -37,33 +37,37 @@ const EventForm = ({
             {singleEvent ? (
                 <h1>update card</h1>,
                 formStructure.map(f => (
-                    <Input
-                        key={f.name}
-                        type={f.type}
-                        name={f.name}
-                        id={f.id}
-                        text={f.text}
-                        handleChange={handleChange}
-                        placeholder={f.placeholder}
-                        value={singleEvent[`${f.name}`]}
-                        required={f.required}
+                    <div classname="form-group">
+                        <Input
+                            key={f.name}
+                            type={f.type}
+                            name={f.name}
+                            id={f.id}
+                            text={f.text}
+                            handleChange={handleChange}
+                            placeholder={f.placeholder}
+                            value={singleEvent[`${f.name}`]}
+                            required={f.required}
 
-                    />
+                        />
+                    </div>
                 )))
                 :
 
                 formStructure.map(f => (
-                    <Input
-                        key={f.name}
-                        type={f.type}
-                        name={f.name}
-                        id={f.id}
-                        text={f.text}
-                        handleChange={handleChange}
-                        placeholder={f.placeholder}
-                        required={f.required}
+                    <div classname="form-group">
+                        <Input
+                            key={f.name}
+                            type={f.type}
+                            name={f.name}
+                            id={f.id}
+                            text={f.text}
+                            handleChange={handleChange}
+                            placeholder={f.placeholder}
+                            required={f.required}
 
-                    />
+                        />
+                    </div>
                 ))
             }
             <Button type='submit'>{buttonText}</Button>

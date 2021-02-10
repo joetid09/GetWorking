@@ -4,7 +4,7 @@ import { UserProfileContext } from '../../providers/UserProfileProvider'
 import ApplicationDetailCard from './ApplicationDetailsCard'
 import ApplicationUpdateModal from './ApplicationUpdateModal'
 import EventUpdateModal from '../Event/EventUpdateModal'
-import { Modal, ModalHeader, Button } from 'reactstrap'
+import { Modal, ModalHeader, Button, CardDeck } from 'reactstrap'
 import EventCard from '../Event/EventCard'
 import EventCreateModal from '../Event/EventCreateModals'
 
@@ -71,7 +71,7 @@ const ApplicationDetail = () => {
                             :
                             <div>
                                 <div className="detailsHeader"> <ApplicationDetailCard application={application} setEventModal={setEventModal} setDetailModal={setDetailModal} detailModal={detailModal} events={events} getApplication={getApplication} /> </div>
-                                <div className="deventList">{events.map(e => <EventCard e={e} setEventModal={setEventModal} setEvent={setEvent} setUpdateEventModal={setUpdateEventModal} getEvent={getEvent} getApplication={getApplication} />)}</div>
+                                <CardDeck className="Event-Card-Deck">{events.map(e => <EventCard e={e} setEventModal={setEventModal} setEvent={setEvent} setUpdateEventModal={setUpdateEventModal} getEvent={getEvent} getApplication={getApplication} />)}</CardDeck>
                             </div>
 
 

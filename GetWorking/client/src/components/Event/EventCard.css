@@ -1,0 +1,13 @@
+.Event-Card {
+    height: 300px;
+    width:350px;
+    padding:10px;
+    border:1px solid black;
+    }
+    
+.Event-Card-Deck {
+    padding:200px;
+}
+    .container {
+        margin-top: 10;
+    }
