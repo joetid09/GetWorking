@@ -7,10 +7,12 @@ import {
     CardText, CardTitle
 } from "reactstrap";
 import "./EventCard.css"
+import { useHistory } from 'react-router-dom'
 import dayjs from 'dayjs'
 
 const EventCard = ({ e, setEvent, setUpdateEventModal, getEvent, getApplication }) => {
     const [pendingDelete, setPendingDelete] = useState(false)
+    const history = useHistory();
     var dayjs = require('dayjs')
     const UpdateStatus = (e) => {
         fetch(`/api/event/updateStatus/${e.id}`, {
@@ -27,7 +29,8 @@ const EventCard = ({ e, setEvent, setUpdateEventModal, getEvent, getApplication 
         return fetch(`/api/event/${e.id}`, {
             method: "DELETE",
         })
-            .then(getEvent(e.id))
+            .then(getApplication(e.applicationId))
+            .then(getEvent(e.applicationId))
             .then(setPendingDelete(false))
     }
 
@@ -77,29 +80,7 @@ const EventCard = ({ e, setEvent, setUpdateEventModal, getEvent, getApplication 
                             <Button onClick={() => setPendingDelete(true)}>delete</Button>
                         </CardBody>
                     </Card>
-                    // <div>
-                            /* <Container>
-                                <div className="Event-Container">
-                                    <Row className="event-card-row">
-                                        <Col xs="5">
-                                            <h3>{e.title}</h3>
-                                            <p className="lead">Due:{dayjs(e.dateToComplete).format('YYYY/DD/MM')}</p>
-
-                                            <Button onClick={() => setPendingDelete(true)}>delete</Button>
-                                        </Col><Col xs="5">
-
-                                            <h2 className="display-5">Notes</h2>
-                                            <p className="lead">{e.body}</p>
-                                            <Button onClick={(() => {
-                                                setEvent(e)
-                                                setUpdateEventModal(true)
-                                            }
-                                            )}> edit</Button>
-                                        </Col>
-                                    </Row>
-                                </div>
-                            </Container>
-                        </div> */}
+            }
 
         </div >
     )

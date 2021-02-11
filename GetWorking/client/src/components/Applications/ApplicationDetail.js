@@ -55,17 +55,17 @@ const ApplicationDetail = () => {
 
                 eventModal ?
                     <Modal isOpen={eventModal}>
-                        <EventCreateModal setEventModal={setEventModal} events={events} setEvent={setEvent} application={application} />
+                        <EventCreateModal getApplication={getApplication} setEventModal={setEventModal} events={events} setEvent={setEvent} application={application} getEvent={getEvent} />
                     </Modal>
                     :
                     detailModal ?
                         <Modal isOpen={detailModal}>
-                            <ApplicationUpdateModal setDetailModal={setDetailModal} application={application} setApplication={setApplication} />
+                            <ApplicationUpdateModal setDetailModal={setDetailModal} application={application} setApplication={setApplication} getApplication={getApplication} setDetailModal={setDetailModal} />
                         </Modal>
                         :
                         updateEventModal ? (console.log(singleEvent),
                             <Modal isOpen={updateEventModal}>
-                                <EventUpdateModal setDetailModal={setDetailModal} application={application} setApplication={setApplication} setUpdateEventModal={setUpdateEventModal} singleEvent={singleEvent} setEvent={setEvent} />
+                                <EventUpdateModal getApplication={getApplication} getEvent={getEvent} setDetailModal={setDetailModal} application={application} setApplication={setApplication} setUpdateEventModal={setUpdateEventModal} singleEvent={singleEvent} setEvent={setEvent} />
                             </Modal>
                         )
                             :
