@@ -1,5 +1,21 @@
 .app-form {
-    width: 350px;
+  position: absolute;
+  z-index: 15;
+  top: 25%;
+  left: 40%;
+    width: 550px;
     margin: 0 auto;
     padding: 100px 0 30px;
+    border: 2px solid black;
+  }
+
+  input{
+    border-radius: 8px;
+    margin:20px;
+    width: 450px;
+    height: 50px;
+  }
+
+  label {
+    font-size: 20px;
   }
