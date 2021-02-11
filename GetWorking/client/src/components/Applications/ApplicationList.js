@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import App from '../../App'
 import { UserProfileContext } from '../../providers/UserProfileProvider'
 import ApplicationCard from "./ApplicationCard"
+import "./ApplicationCard.css"
 
 const ApplicationList = () => {
 
@@ -26,7 +27,7 @@ const ApplicationList = () => {
     }
 
     return (
-        <div className="applicationContainer">
+        <div className="application-list-container">
             {applications.map((app) => {
                 return <ApplicationCard application={app} />
             })}

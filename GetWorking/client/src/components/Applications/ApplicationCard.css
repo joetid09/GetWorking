@@ -1,0 +1,9 @@
+.application-card-row {
+height: 125;
+padding:10px;
+border:1px solid black;
+}
+
+.application-list-container {
+    margin-top: 10;
+}

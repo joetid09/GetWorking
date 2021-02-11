@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Button } from "reactstrap"
 import Input from "./Input"
+import "./Form.css";
 import dayjs from 'dayjs'
 // import Button from "./Button"
 // import classes from "../Form.module.css"
@@ -31,42 +32,53 @@ const Form = ({
     }
 
     return (
+        <div className="app-form">
+            <form onSubmit={onSubmit}>
+                {
+                    application ? <h2>Update Application</h2>
+                        :
+                        <h2>New Application</h2>
+                }
 
-        <form onSubmit={onSubmit}>
+                {application ? (
+                    (<h2>{formTitle}</h2>,
+                        formStructure.map(f => (
+                            <div classname="form-group">
+                                <Input
+                                    key={f.name}
+                                    type={f.type}
+                                    name={f.name}
+                                    id={f.id}
+                                    text={f.text}
+                                    handleChange={handleChange}
+                                    placeholder={f.placeholder}
+                                    value={application[`${f.name}`]}
+                                    required={f.required}
 
-            <h2>{formTitle}</h2>
-            {application ? (
-                formStructure.map(f => (
-                    <Input
-                        key={f.name}
-                        type={f.type}
-                        name={f.name}
-                        id={f.id}
-                        text={f.text}
-                        handleChange={handleChange}
-                        placeholder={f.placeholder}
-                        value={application[`${f.name}`]}
-                        required={f.required}
+                                />
+                            </div>)
+                        )))
+                    : (<h2>anything</h2>,
+                        formStructure.map(f => (
+                            <div classname="form-group">
+                                <Input
+                                    key={f.name}
+                                    type={f.type}
+                                    name={f.name}
+                                    id={f.id}
+                                    text={f.text}
+                                    handleChange={handleChange}
+                                    placeholder={f.placeholder}
+                                    required={f.required}
 
-                    />
-                )))
-                :
-                formStructure.map(f => (
-                    <Input
-                        key={f.name}
-                        type={f.type}
-                        name={f.name}
-                        id={f.id}
-                        text={f.text}
-                        handleChange={handleChange}
-                        placeholder={f.placeholder}
-                        required={f.required}
-
-                    />
-                ))
-            }
-            <Button type='submit'>{buttonText}</Button>
-        </form>
+                                />
+                            </div>
+                        ))
+                    )
+                }
+                <Button type='submit'>{buttonText}</Button>
+            </form>
+        </div>
     )
 };
 

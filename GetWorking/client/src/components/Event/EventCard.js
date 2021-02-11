@@ -3,12 +3,16 @@ import {
     Button,
     Modal, ModalHeader,
     ModalBody, ModalFooter,
-    Jumbotron
+    Card, CardBody, CardSubtitle,
+    CardText, CardTitle
 } from "reactstrap";
+import "./EventCard.css"
+import { useHistory } from 'react-router-dom'
 import dayjs from 'dayjs'
 
 const EventCard = ({ e, setEvent, setUpdateEventModal, getEvent, getApplication }) => {
     const [pendingDelete, setPendingDelete] = useState(false)
+    const history = useHistory();
     var dayjs = require('dayjs')
     const UpdateStatus = (e) => {
         fetch(`/api/event/updateStatus/${e.id}`, {
@@ -25,7 +29,8 @@ const EventCard = ({ e, setEvent, setUpdateEventModal, getEvent, getApplication 
         return fetch(`/api/event/${e.id}`, {
             method: "DELETE",
         })
-            .then(getEvent(e.id))
+            .then(getApplication(e.applicationId))
+            .then(getEvent(e.applicationId))
             .then(setPendingDelete(false))
     }
 
@@ -43,7 +48,8 @@ const EventCard = ({ e, setEvent, setUpdateEventModal, getEvent, getApplication 
                         <ModalFooter>
                             <Button onClick={(e) => setPendingDelete(false)}>No, Cancel</Button>
                             <Button
-                                className="btn btn-outline-danger"
+                                color="primary"
+                                className="danger"
                                 onClick={() => {
                                     Delete(e)
                                 }}
@@ -53,31 +59,29 @@ const EventCard = ({ e, setEvent, setUpdateEventModal, getEvent, getApplication 
                         </ModalFooter>
                     </Modal>
                 </div>
-                    :
-                    <div>
-                        <Jumbotron>
-
-                            <h1 className="display-3">{e.title}</h1>
-                            {e.status == 0 ? <div>
+                    : <Card className="Event-Card">
+                        <CardBody>
+                            <CardTitle><h2>{e.title}</h2></CardTitle>
+                            <CardSubtitle>Due {dayjs(e.dateToComplete).format('YYYY/DD/MM')}</CardSubtitle>
+                            <CardText> {e.status == 0 ? <div>
                                 <Button onClick={() => { UpdateStatus(e) }}>Completed?</Button>
                             </div> : <h4 classname="display-5">
                                     Completed! ✔️
                     </h4>
-                            }
-                            <Button onClick={() => setPendingDelete(true)}>delete</Button>
-                            <p className="lead">Due:{dayjs(e.dateToComplete).format('YYYY/DD/MM')}</p>
-                            <hr className="my-2"></hr>
-                            <h2 className="display-5">Notes</h2>
-                            <p className="lead">{e.body}</p>
+                            }</CardText>
+                            <hr></hr>
+                            <h4>Notes</h4>
+                            <CardText>{e.body}</CardText>
                             <Button onClick={(() => {
                                 setEvent(e)
                                 setUpdateEventModal(true)
                             }
                             )}> edit</Button>
-
-                        </Jumbotron>
-                    </div>
+                            <Button onClick={() => setPendingDelete(true)}>delete</Button>
+                        </CardBody>
+                    </Card>
             }
+
         </div >
     )
 }
