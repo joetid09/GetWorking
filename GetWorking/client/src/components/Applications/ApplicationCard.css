@@ -2,10 +2,16 @@
 height: 100px;
 padding:10px;
 border:1px solid black;
+background-color: rgba(162, 192, 202, 0.699);
+font-size: large;
+}
+
+a {
+    color:rgb(114, 111, 111);
 }
 
 .application-list-container {
-   padding-top: 10;
+   padding-top: 7px;
 }
 
 .jobTitle{
@@ -15,5 +21,5 @@ border:1px solid black;
   }
 
 .jobDescription {
-    margin-top: 15px;
+    margin-top: 8px;
 }
