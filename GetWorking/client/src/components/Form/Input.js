@@ -9,7 +9,8 @@ const Input = ({ text,
     name,
     id = name,
     required = false,
-    value
+    value,
+    maxLength
 }) => {
 
     console.log("values", value)
@@ -25,7 +26,7 @@ const Input = ({ text,
                 placeholder={placeholder}
                 value={value}
                 onChange={handleChange}
-
+                maxLength={maxLength}
             />
 
         </>

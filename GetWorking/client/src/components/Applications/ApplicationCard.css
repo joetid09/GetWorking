@@ -1,9 +1,19 @@
 .application-card-row {
-height: 125;
+height: 100px;
 padding:10px;
 border:1px solid black;
 }
 
 .application-list-container {
-    margin-top: 10;
+   padding-top: 10;
+}
+
+.jobTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.jobDescription {
+    margin-top: 15px;
 }

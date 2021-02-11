@@ -13,14 +13,15 @@ const ApplicationCard = ({ application }) => {
         <Container className="application-list-container">
             <div className="application-list-container">
                 <Row className="application-card-row">
-                    <Col xs="5">
+                    <Col xs="5" className="jobTitle">
                         <Link to={`/application/details/${application.id}`}>
-                            <CardTitle><strong>Job Title: {application.jobTitle}</strong></CardTitle>
+                            <CardTitle><strong>{application.jobTitle}</strong></CardTitle>
                         </Link>
                     </Col>
-                    <Col xs="5">
+                    <Col xs="5" className="jobDescription">
                         <CardSubtitle>Company: {application.company}</CardSubtitle>
-                        <CardText>Date Applied {application.dateApplied}</CardText>
+                        <CardSubtitle>Source: {application.source}</CardSubtitle>
+                        <CardText>Applied on {application.dateApplied}</CardText>
                     </Col>
                 </Row>
 

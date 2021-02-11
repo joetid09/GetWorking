@@ -48,7 +48,7 @@ const EventForm = ({
                             placeholder={f.placeholder}
                             value={singleEvent[`${f.name}`]}
                             required={f.required}
-
+                            maxLength={f.maxLength}
                         />
                     </div>
                 )))
@@ -65,7 +65,7 @@ const EventForm = ({
                             handleChange={handleChange}
                             placeholder={f.placeholder}
                             required={f.required}
-
+                            maxLength={f.maxLength}
                         />
                     </div>
                 ))
