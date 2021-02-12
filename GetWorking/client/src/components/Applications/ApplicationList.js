@@ -29,7 +29,7 @@ const ApplicationList = () => {
     return (
         <div className="application-list-container">
             {applications.map((app) => {
-                return <ApplicationCard application={app} />
+                return <ApplicationCard application={app} getApplications={getApplications} />
             })}
         </div>
     )

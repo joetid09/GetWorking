@@ -10,7 +10,6 @@ const HomePage = () => {
     const history = useHistory();
     return (
         <div className="button-group-container">
-            <h1>Wh</h1>
             <ButtonGroup vertical >
                 <Button className="btn-xlarge" size="lg" onClick={e => history.push("/newApplication")}> Add New App</Button >
                 <Button className="btn-xlarge" size="lg" onClick={e => history.push("/applications")}>View All Apps</Button>

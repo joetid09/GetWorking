@@ -6,8 +6,10 @@ import {
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import "./ApplicationCard.css"
+import dayjs from 'dayjs'
 
-const ApplicationCard = ({ application }) => {
+const ApplicationCard = ({ application, getApplications }) => {
+    var dayjs = require('dayjs')
 
     return (
         <Container className="application-list-container">
@@ -20,8 +22,8 @@ const ApplicationCard = ({ application }) => {
                     </Col>
                     <Col xs="5" className="jobDescription">
                         <CardSubtitle>Company: {application.company}</CardSubtitle>
-                        <CardSubtitle>Source: {application.source}</CardSubtitle>
-                        <CardText>Applied on {application.dateApplied}</CardText>
+                        {/* <CardSubtitle>Source: {application.source}</CardSubtitle> */}
+                        <CardText>Applied on     {dayjs(application.dateApplied).format('YYYY/DD/MM')}</CardText>
                     </Col>
                 </Row>
 
