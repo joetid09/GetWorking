@@ -23,7 +23,7 @@ const ApplicationCreate = ({ application, setApplication, getApplication, setDet
             },
             body: JSON.stringify(formData)
         })
-        history.push("/applications")
+            .then(history.push("/applications"))
     }
     const UpdateApplication = (application, token) => {
         //currently calling token.i due to there being 5 fields on token and "i" having the actual token

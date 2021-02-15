@@ -7,6 +7,7 @@ import EventUpdateModal from '../Event/EventUpdateModal'
 import { Modal, ModalHeader, Button, CardDeck } from 'reactstrap'
 import EventCard from '../Event/EventCard'
 import EventCreateModal from '../Event/EventCreateModals'
+import dayjs from 'dayjs'
 
 const ApplicationDetail = () => {
     const [application, setApplication] = useState({})
@@ -17,6 +18,7 @@ const ApplicationDetail = () => {
     const [updateEventModal, setUpdateEventModal] = useState(false)
     const [deleteModal, setDeleteModal] = useState(false)
     const { getToken } = useContext(UserProfileContext)
+    var dayjs = require('dayjs')
     const { appId } = useParams();
     const token = getToken()
 

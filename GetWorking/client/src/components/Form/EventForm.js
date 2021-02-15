@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Button } from "reactstrap"
 import Input from "./Input"
 import dayjs from 'dayjs'
+import "./Form.css";
 // import Button from "./Button"
 // import classes from "../Form.module.css"
 
@@ -15,7 +16,9 @@ const EventForm = ({
     onSubmit,
     events,
     setEvent,
-    singleEvent
+    singleEvent,
+    setEventModal,
+    setUpdateEventModal
 }) => {
 
     const handleChange = event => {
@@ -32,8 +35,7 @@ const EventForm = ({
     }
 
     return (
-
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className={"app-form"}>
             {singleEvent ? (
                 <h1>update card</h1>,
                 formStructure.map(f => (
@@ -48,7 +50,7 @@ const EventForm = ({
                             placeholder={f.placeholder}
                             value={singleEvent[`${f.name}`]}
                             required={f.required}
-
+                            maxLength={f.maxLength}
                         />
                     </div>
                 )))
@@ -65,12 +67,14 @@ const EventForm = ({
                             handleChange={handleChange}
                             placeholder={f.placeholder}
                             required={f.required}
-
+                            maxLength={f.maxLength}
                         />
                     </div>
                 ))
             }
             <Button type='submit'>{buttonText}</Button>
+            {singleEvent ? <Button onClick={() => setUpdateEventModal(false)}>cancel</Button> :
+                <Button onClick={() => setEventModal(false)}>cancel</Button>}
         </form>
     )
 };

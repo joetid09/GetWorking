@@ -37,7 +37,9 @@ const Form = ({
                 {
                     application ? <h2>Update Application</h2>
                         :
-                        <h2>New Application</h2>
+                        <div className="formHeader"><h2>New Application</h2>
+                            <hr></hr>
+                        </div>
                 }
 
                 {application ? (

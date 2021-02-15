@@ -34,7 +34,6 @@ const EventCreate = ({ events, getEvent, setEvent, application, singleEvent, set
     }
     const UpdateEvent = (singleEvent, token) => {
         //currently calling token.i due to there being 5 fields on token and "i" having the actual token
-        debugger;
         fetch(`/api/event/${singleEvent.id}`, {
 
             method: "PUT",
@@ -70,6 +69,8 @@ const EventCreate = ({ events, getEvent, setEvent, application, singleEvent, set
             application={application}
             setEvent={setEvent}
             singleEvent={singleEvent}
+            setEventModal={setEventModal}
+            setUpdateEventModal={setUpdateEventModal}
         />
     )
 }

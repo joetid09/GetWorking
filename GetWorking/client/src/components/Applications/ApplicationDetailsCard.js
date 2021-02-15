@@ -11,7 +11,6 @@ const ApplicationDetailCard = ({ application, setDetailModal, setEventModal, get
     const [pendingDelete, setPendingDelete] = useState(false)
     const history = useHistory();
     var dayjs = require('dayjs')
-    { dayjs(application.dateApplied).format('YYYY/DD/MM') }
 
     const Delete = (application) => {
 
@@ -40,7 +39,8 @@ const ApplicationDetailCard = ({ application, setDetailModal, setEventModal, get
             </Modal> : (
                     <div>
                         <h2>{application.jobTitle}</h2>
-                        <p>applied on   {dayjs(application.dateApplied).format('YYYY/DD/MM')}</p>
+                        <h5>{application.company}</h5>
+                        <p>applied on {dayjs(application.dateApplied).format('YYYY/DD/MM')}</p>
                         <Button onClick={(() => setEventModal(true))}> Create new event</Button>
                         <Button onClick={(() => setDetailModal(true))}>Edit</Button>
                         <Button onClick={(() => { setPendingDelete(true) })}>delete</Button>

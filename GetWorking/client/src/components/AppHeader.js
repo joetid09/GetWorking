@@ -31,17 +31,6 @@ const AppHeader = () => {
     return (
         <div>
             <Navbar color="dark" dark expand="md">
-                {/* <NavbarBrand tag={Link} to="/">
-          <img
-            id="header-logo"
-            src="/quill.png"
-            width="30"
-            height="30"
-            className="mr-1"
-            alt="Quill Logo"
-          />
-          Tabloid
-        </NavbarBrand> */}
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>

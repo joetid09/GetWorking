@@ -1,0 +1,19 @@
+
+.button-group-container {
+        position: absolute;
+
+        z-index: 15;
+        top: 40%;
+        left: 50%;
+        margin: -100px 0 0 -150px;
+        color: white;
+        border-radius: 8px;
+  }
+
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 54px; 
+    border: 2px solid black;
+    line-height: normal;
+            border-radius: 8px;
+}
