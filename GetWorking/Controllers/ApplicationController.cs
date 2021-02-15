@@ -30,7 +30,11 @@ namespace GetWorking.Controllers
             var user = GetCurrentUserProfile();
             return Ok(_appRepo.GetByUserProfileId(user.Id));
         }
-
+        [HttpGet("search")]
+        public IActionResult Search(string q, bool sortDesc)
+        {
+            return Ok(_appRepo.Search(q, sortDesc));
+        }
         [HttpGet("{id}")]
         public IActionResult GetApplicationDetail(int id)
         {
