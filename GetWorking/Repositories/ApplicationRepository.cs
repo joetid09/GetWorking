@@ -21,9 +21,18 @@ namespace GetWorking.Repositories
         {
             return _context.Application
                 .Where(ap => ap.UserProfileId == userProfileId)
+                .OrderByDescending(ap => ap.DateApplied)
                 .ToList();
         }
+        public List<Application> Search(string criterion, bool sortDescending)
+        {
+            var query = _context.Application
+                                .Where(p => p.JobTitle.Contains(criterion));
 
+            return sortDescending
+                ? query.OrderByDescending(p => p.DateApplied).ToList()
+                : query.OrderBy(p => p.DateApplied).ToList();
+        }
         public Application GetByApplicationId(int applicationId)
         {
             return _context.Application
