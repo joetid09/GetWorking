@@ -9,6 +9,7 @@ namespace GetWorking.Repositories
         void Delete(Application oldApp, List<Event> eventsList);
         Application GetByApplicationId(int applicationId);
         List<Application> GetByUserProfileId(int userProfileId);
+        List<Application> Search(string criterion, bool sortDescending);
         void Update(Application application);
     }
 }

@@ -79,6 +79,7 @@ const Form = ({
                     )
                 }
                 <Button type='submit'>{buttonText}</Button>
+                <Button>Cancel</Button>
             </form>
         </div>
     )
